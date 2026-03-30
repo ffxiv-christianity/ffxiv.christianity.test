@@ -21,11 +21,35 @@ header {
     color: #fff;
     text-align: center;
     
-    /* 稍微把上下內邊距 (Padding) 加大，讓大聖堂的圖片能露出更多範圍 */
-    padding: 8rem 0; 
+    display: flex;
+    flex-direction: column; 
     
+    /* 【核心修改】 */
+    justify-content: flex-end; /* 垂直對齊：推到最下方 */
+    align-items: flex-end;    /* 水平對齊：推到最右方 */
+
+    min-height: 50vh; 
+    
+    /* 這裡控制文字距離右邊與底部的距離，避免貼死邊緣 */
+    padding-right: 5%;         /* 距離右邊 5% 的寬度 */
+    padding-bottom: 10px;      /* 距離底部 30 像素 */
+
+    text-align: right;         /* 確保多行文字時，每一行都向右對齊 */
+    line-height: 0.05;
+
     /* 加上文字陰影，避免大聖堂的背景太亮導致白字看不清楚 */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
+}
+
+.line {
+    width: 300px;           /* 控制橫線的長度 */
+    border: 0;              /* 移除預設邊框 */
+    height: 2px;            /* 橫線的厚度 */
+    
+    background: linear-gradient(to right, transparent, #ffffff, transparent);
+    
+    margin: 10px 0;         /* 調整橫線與上下文字的間距 */
+    align-self: flex-end;   
 }
 
 /* 導覽列 */
