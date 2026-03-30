@@ -1,0 +1,79 @@
+/* 基礎設定 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* 頁首區塊 (未來可以在這裡換上你們公會的 Gpose 大合照當背景) */
+header {
+    background-color: #2c3e50; /* 深藍色底色 */
+    color: #fff;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+/* 導覽列 */
+nav {
+    background: #34495e;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    position: sticky;
+    top: 0; /* 讓導覽列在滾動時固定在最上方 */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f39c12; /* 滑鼠移過去時顯示 FF14 常見的金黃色 */
+}
+
+/* 主要內容區塊 */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 加上淡淡的陰影增加立體感 */
+}
+
+/* 按鈕樣式 */
+.btn {
+    display: inline-block;
+    background: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #2980b9;
+}
+
+/* 頁尾 */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2c3e50;
+    color: #fff;
+    margin-top: 40px;
+}
