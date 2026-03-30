@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FF14 基督教公會 | 艾奧傑亞的團契</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>基督教公會</h1>
-        <hr class="line"> <p>FINAL FANTASY XIV</p>
+        <hr class="line">
+        <p>FINAL FANTASY XIV</p>
     </header>
 
     <nav>
@@ -26,12 +29,61 @@
 
         <section id="activities">
             <h2>公會活動</h2>
-            <ul>
-                <li>巴哈海都1-35基督教大教堂</li>
-                <li>五千萬豪華大聖堂感恩活動</li>
-                <li>服裝大賽暨情人節新年活動</li>
-                <li>聖徒挖寶團契</li>
+
+            <ul class="activity-tabs">
+                <li class="tab-btn active" onclick="showSlider('church')">基督教大教堂</li>
+                <li class="tab-btn" onclick="showSlider('Group')">聖徒團契</li>
+                <li class="tab-btn" onclick="showSlider('event_Christmas')">聖誕節活動</li>
             </ul>
+
+            <div class="all-sliders">
+                <div id="church" class="slider-group active">
+                    <div class="carousel-wrapper">
+                        <button class="prev" onclick="moveSlide('church', -1)">❮</button>
+                        <div class="slider-container">
+                            <div class="item"><img src="images/大聖堂1.jpg" alt="教堂1"></div>
+                            <div class="item"><img src="images/大聖堂2.jpg" alt="教堂2"></div>
+                            <div class="item"><img src="images/大聖堂3.jpg" alt="教堂3"></div>
+                            <div class="item"><img src="images/預定地合照1.jpg" alt="預定地合照1"></div>
+                            <div class="item"><img src="images/預定地合照2.jpg" alt="預定地合照2"></div>
+                            <div class="item"><img src="images/預定地合照3.jpg" alt="預定地合照3"></div>
+                        </div>
+                        <button class="next" onclick="moveSlide('church', 1)">❯</button>
+                    </div>
+                    <p class="slider-note">大聖堂系列照片</p>
+                </div>
+
+                <div id="Group" class="slider-group">
+                    <div class="carousel-wrapper">
+                        <button class="prev" onclick="moveSlide('Group', -1)">❮</button>
+                        <div class="slider-container">
+                            <div class="item"><img src="images/挖寶合照1.jpg" alt="挖寶合照1"></div>
+                            <div class="item"><img src="images/白袍合照1.jpg" alt="白袍合照1"></div>
+                            <div class="item"><img src="images/白袍合照2.jpg" alt="白袍合照2"></div>
+                            <div class="item"><img src="images/婚禮合照1.jpg" alt="婚禮合照1"></div>
+                            <div class="item"><img src="images/婚禮合照2.jpg" alt="婚禮合照2"></div>
+                            <div class="item"><img src="images/婚禮合照3.jpg" alt="婚禮合照3"></div>
+                            <div class="item"><img src="images/婚禮合照4.jpg" alt="婚禮合照4"></div>
+                            <div class="item"><img src="images/婚禮合照5.jpg" alt="婚禮合照5"></div>
+                        </div>
+                        <button class="next" onclick="moveSlide('Group', 1)">❯</button>
+                    </div>
+                    <p class="slider-note">聖徒團契合照</p>
+                </div>
+
+                <div id="event_Christmas" class="slider-group">
+                    <div class="carousel-wrapper">
+                        <button class="prev" onclick="moveSlide('event_Christmas', -1)">❮</button>
+                        <div class="slider-container">
+                            <div class="item"><img src="images/聖誕節合照1.jpg" alt="聖誕節合照1"></div>
+                            <div class="item"><img src="images/聖誕節合照2.jpg" alt="聖誕節合照2"></div>
+                            <div class="item"><img src="images/聖誕節合照3.jpg" alt="聖誕節合照3"></div>
+                        </div>
+                        <button class="next" onclick="moveSlide('event_Christmas', 1)">❯</button>
+                    </div>
+                    <p class="slider-note">聖誕節活動紀錄</p>
+                </div>
+            </div>
         </section>
 
         <section id="join">
@@ -44,5 +96,46 @@
     <footer>
         <p>© 2026 FF14 基督教公會. All rights reserved.</p>
     </footer>
+
+    <script>
+        // 切換顯示不同的相簿分類
+        function showSlider(sliderId) {
+            // 隱藏所有組別
+            const groups = document.querySelectorAll('.slider-group');
+            groups.forEach(g => g.classList.remove('active'));
+
+            // 移除所有按鈕的高亮
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            // 顯示指定的組別
+            const target = document.getElementById(sliderId);
+            if (target) {
+                target.classList.add('active');
+                // 切換分類時，將滾動條重置到第一張
+                const container = target.querySelector('.slider-container');
+                if (container) container.scrollLeft = 0;
+            }
+
+            // 讓點擊的那個按鈕變色
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+        }
+
+        // 控制相簿內部的左右輪播滑動
+        function moveSlide(sliderId, direction) {
+            const container = document.querySelector(`#${sliderId} .slider-container`);
+            if (container) {
+                const slideWidth = container.clientWidth;
+                // 利用 scrollBy 進行平滑偏移
+                container.scrollBy({
+                    left: direction * slideWidth,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
 </body>
+
 </html>

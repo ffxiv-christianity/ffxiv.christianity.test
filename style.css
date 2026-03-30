@@ -8,15 +8,12 @@ body {
     color: #333;
 }
 
-/* 頁首區塊 (Hero Section) */
+/* 頁首區塊 (Hero Section) - 維持原樣 */
 header {
-    /* 指定背景圖片路徑 */
     background-image: url('images/大聖堂2.jpg');
-    
-    /* 【關鍵設定】讓圖片自動適應容器大小 */
-    background-size: cover;       /* 讓圖片等比例縮放，完全填滿整個區塊，多餘的部分會被裁切 */
-    background-position: center;  /* 讓圖片縮放時，始終保持以正中央為對齊基準 */
-    background-repeat: no-repeat; /* 防止圖片太小時產生磁磚般的重複拼貼 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     
     color: #fff;
     text-align: center;
@@ -24,31 +21,26 @@ header {
     display: flex;
     flex-direction: column; 
     
-    /* 【核心修改】 */
-    justify-content: flex-end; /* 垂直對齊：推到最下方 */
-    align-items: flex-end;    /* 水平對齊：推到最右方 */
+    justify-content: flex-end; 
+    align-items: flex-end;    
 
-    min-height: 50vh; 
+    min-height: 40vh; 
     
-    /* 這裡控制文字距離右邊與底部的距離，避免貼死邊緣 */
-    padding-right: 5%;         /* 距離右邊 5% 的寬度 */
-    padding-bottom: 10px;      /* 距離底部 30 像素 */
+    padding-right: 5%;         
+    padding-bottom: 10px;      
 
-    text-align: right;         /* 確保多行文字時，每一行都向右對齊 */
+    text-align: right;         
     line-height: 0.05;
 
-    /* 加上文字陰影，避免大聖堂的背景太亮導致白字看不清楚 */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
 }
 
 .line {
-    width: 300px;           /* 控制橫線的長度 */
-    border: 0;              /* 移除預設邊框 */
-    height: 2px;            /* 橫線的厚度 */
-    
+    width: 300px;           
+    border: 0;              
+    height: 2px;            
     background: linear-gradient(to right, transparent, #ffffff, transparent);
-    
-    margin: 10px 0;         /* 調整橫線與上下文字的間距 */
+    margin: 10px 0;         
     align-self: flex-end;   
 }
 
@@ -59,7 +51,8 @@ nav {
     justify-content: center;
     padding: 1rem;
     position: sticky;
-    top: 0; /* 讓導覽列在滾動時固定在最上方 */
+    top: 0; 
+    z-index: 100;
 }
 
 nav a {
@@ -71,7 +64,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #f39c12; /* 滑鼠移過去時顯示 FF14 常見的金黃色 */
+    color: #f39c12; 
 }
 
 /* 主要內容區塊 */
@@ -82,25 +75,16 @@ main {
 }
 
 section {
-    /* 使用經典羊皮紙色 */
-    /* background-color: #F5F1E6;  */
     background: radial-gradient(circle, #F5F1E6 0%, #f4eee1 100%);
-    
-    /* 邊框改用深一點的褐色，模擬紙張邊緣 */
     border: 1px solid #D2C1A5; 
-    
     margin-bottom: 30px;
     padding: 30px;
-    border-radius: 4px; /* 羊皮紙通常不會太圓潤，4px 剛剛好 */
-
-    /* 調整陰影：讓它看起來像疊在桌上的紙 */
+    border-radius: 4px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); 
-    
-    /* 讓內文字體顏色稍微深一點點，不要純黑，改用深灰褐色 */
     color: #3E322B; 
 }
 
-/* 針對標題（如：關於我們）可以使用深一點的褐色 */
+/* 針對標題使用深褐色 */
 section h2 {
     color: #5C4033; 
     border-bottom: 2px solid #D2C1A5;
@@ -108,7 +92,100 @@ section h2 {
     margin-bottom: 20px;
 }
 
-/* 按鈕樣式 */
+/* 活動標籤切換按鈕 */
+.activity-tabs {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tab-btn {
+    background-color: #E8DCC4; 
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #5C4033;
+    border: 1px solid #D2C1A5;
+}
+
+.tab-btn.active {
+    background-color: #FFD700;
+    border-color: #B48C00;
+}
+
+/* 輪播器結構樣式 */
+.slider-group {
+    display: none; /* 預設隱藏，由 JS 控制顯示 */
+}
+
+.slider-group.active {
+    display: block;
+}
+
+/* 新增：輪播器外層包裝，用來放置左右按鈕 */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 修改後的容器：隱藏手動捲動條，改由按鈕控制 */
+.slider-container {
+    display: flex;
+    overflow-x: hidden; 
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.item {
+    flex: 0 0 100%; 
+}
+
+.item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+/* 左右切換按鈕樣式 */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.prev { left: 0; border-radius: 0 5px 5px 0; }
+.next { right: 0; border-radius: 5px 0 0 5px; }
+
+.prev:hover, .next:hover {
+    background: rgba(243, 156, 18, 0.8);
+}
+
+.slider-note {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    color: #8a7b63;
+}
+
+/* 按鈕樣式 (Discord) */
 .btn {
     display: inline-block;
     background: #3498db;
@@ -133,9 +210,14 @@ footer {
     margin-top: 40px;
 }
 
+/* 手機版優化 - 維持原本設計 */
 @media (max-width: 768px) {
     header {
-        min-height:35vh; /* 手機版稍微縮短高度，讓使用者更快看到後續內容 */
-        padding-bottom: 20px; /* 手機版間距縮小一點 */
+        min-height: 13vh !important;
+        padding-bottom: 20px !important;
+    }
+    /* 修正手機版圖片高度，避免比例跑掉 */
+    .item img {
+        height: 250px;
     }
 }
