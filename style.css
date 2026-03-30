@@ -8,12 +8,24 @@ body {
     color: #333;
 }
 
-/* 頁首區塊 (未來可以在這裡換上你們公會的 Gpose 大合照當背景) */
+/* 頁首區塊 (Hero Section) */
 header {
-    background-color: #2c3e50; /* 深藍色底色 */
+    /* 指定背景圖片路徑 */
+    background-image: url('images/大聖堂1.jpg');
+    
+    /* 【關鍵設定】讓圖片自動適應容器大小 */
+    background-size: cover;       /* 讓圖片等比例縮放，完全填滿整個區塊，多餘的部分會被裁切 */
+    background-position: center;  /* 讓圖片縮放時，始終保持以正中央為對齊基準 */
+    background-repeat: no-repeat; /* 防止圖片太小時產生磁磚般的重複拼貼 */
+    
     color: #fff;
     text-align: center;
-    padding: 4rem 0;
+    
+    /* 稍微把上下內邊距 (Padding) 加大，讓大聖堂的圖片能露出更多範圍 */
+    padding: 8rem 0; 
+    
+    /* 加上文字陰影，避免大聖堂的背景太亮導致白字看不清楚 */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
 }
 
 /* 導覽列 */
