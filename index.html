@@ -3,45 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FF14 基督教公會 | 艾奧傑亞的團契</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FF14 基督教公會 | 艾歐澤亞的團契</title>
+    <style>
+        /* 移除預設的邊距，讓內容完全貼合螢幕邊緣 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* 防止全螢幕狀態下出現捲動條 */
+            background-color: #000; /* 圖片載入前顯示黑色底 */
+        }
+
+        /* 將超連結撐滿整個螢幕，並設定游標為手指形狀 */
+        .entry-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        /* 關鍵：讓圖片自動適應螢幕大小 */
+        .entry-link img {
+            width: 100%;
+            height: 100%;
+            /* object-fit: cover 是 HTML <img> 版的 background-size: cover */
+            /* 讓圖片等比例縮放填滿，多餘的部分會被裁切，保證不變形 */
+            object-fit: cover; 
+            object-position: center; /* 圖片始終置中對齊 */
+            
+            /* 可選：加上一個淡入的過場動畫，看起來更高級 */
+            animation: fadeIn 2s;
+        }
+
+        /* 定義淡入動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>FF14 基督教公會</h1>
-        <p>在艾奧傑亞建立充滿愛與信仰的家</p>
-    </header>
-
-    <nav>
-        <a href="#about">關於我們</a>
-        <a href="#activities">公會活動</a>
-        <a href="#join">加入我們</a>
-    </nav>
-
-    <main>
-        <section id="about">
-            <h2>關於我們</h2>
-            <p>我們是一群熱愛 Final Fantasy XIV 的基督徒玩家。在這裡，我們不僅一起挑戰副本、享受劇情，也在遊戲外分享生活、彼此代禱。</p>
-        </section>
-
-        <section id="activities">
-            <h2>公會活動</h2>
-            <ul>
-                <li>巴哈海都1-35基督教大教堂</li>
-                <li>週末尋寶與打卡拍照</li>
-                <li>Discord 線上團契與分享</li>
-            </ul>
-        </section>
-
-        <section id="join">
-            <h2>加入我們</h2>
-            <p>無論你是剛入坑的豆芽，還是身經百戰的光之戰士，都歡迎加入我們的行列！在這裡沒有進度壓力，按自己步調遊玩。</p>
-            <a href="你的Discord邀請連結請貼在這裡" class="btn" target="_blank">前往 Discord 伺服器</a>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2026 FF14 基督教公會. All rights reserved.</p>
-    </footer>
+    <a href="home.html" class="entry-link">
+        <img src="images/大聖堂1.jpg" alt="FF14 基督教公會 入口大圖">
+    </a>
 </body>
 </html>
