@@ -150,8 +150,14 @@ section h2 {
 }
 
 .item img {
-    width: 100%;
-    height: 400px;
+width: 100%;
+    /* 1. 移除固定高度設定 */
+    height: auto; 
+    
+    /* 2. 強制保持 16:9 的橫向長方形比例 (大聖堂截圖建議) */
+    aspect-ratio: 16 / 9; 
+    
+    /* 3. 維持 object-fit 防止比例不同時輕微拉伸 */
     object-fit: cover;
     display: block;
 }
@@ -239,6 +245,6 @@ footer {
 
     /* 修正手機版圖片高度，避免比例跑掉 */
     .item img {
-        height: 250px;
+        height: auto !important;
     }
 }
