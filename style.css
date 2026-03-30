@@ -11,7 +11,7 @@ body {
 /* 頁首區塊 (Hero Section) */
 header {
     /* 指定背景圖片路徑 */
-    background-image: url('images/大聖堂1.jpg');
+    background-image: url('images/大聖堂2.jpg');
     
     /* 【關鍵設定】讓圖片自動適應容器大小 */
     background-size: cover;       /* 讓圖片等比例縮放，完全填滿整個區塊，多餘的部分會被裁切 */
