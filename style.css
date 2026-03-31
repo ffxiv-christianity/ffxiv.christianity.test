@@ -280,4 +280,13 @@ footer {
         margin: 0px !important;
         letter-spacing: 1px !important;
     }
+
+    /* blocks */
+    section {
+        padding: 10px 15px 20px 15px !important; 
+    }
+    section h2 {
+        margin-top: 0 !important;
+        font-size: 1.2rem !important; 
+    }
 }
