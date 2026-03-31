@@ -18,7 +18,7 @@
     <nav>
         <a href="#about">關於我們</a>
         <a href="#activities">公會活動</a>
-        <a href="#join">基督教Discord</a>
+        <a href="#join">加入我們</a>
     </nav>
 
     <main>
@@ -34,6 +34,7 @@
             <ul class="activity-tabs">
                 <li class="tab-btn active" onclick="showSlider('church')">基督教大教堂</li>
                 <li class="tab-btn" onclick="showSlider('Group')">聖徒團契</li>
+                <li class="tab-btn" onclick="showSlider('event_Valentine')">情人節暨新年活動</li>
                 <li class="tab-btn" onclick="showSlider('event_Christmas')">聖誕節活動</li>
             </ul>
 
@@ -42,11 +43,13 @@
                     <div class="carousel-wrapper">
                         <button class="prev" onclick="moveSlide('church', -1)">❮</button>
                         <div class="slider-container">
-                            <div class="item"><img src="images/大聖堂1.jpg" alt="教堂1"></div>
-                            <div class="item"><img src="images/大聖堂2.jpg" alt="教堂2"></div>
-                            <div class="item"><img src="images/大聖堂3.jpg" alt="教堂3"></div>
-                            <div class="item"><img src="images/預定地合照1.jpg" alt="預定地合照1"></div>
-                            <div class="item"><img src="images/預定地合照2.jpg" alt="預定地合照2"></div>
+                            <div class="item"><img src="images/大聖堂1.jpg" alt="教堂1" onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/大聖堂2.jpg" alt="教堂2" onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/大聖堂3.jpg" alt="教堂3" onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/預定地合照1.jpg" alt="預定地合照1" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/預定地合照2.jpg" alt="預定地合照2" onclick="openLightbox(this)">
+                            </div>
                         </div>
                         <button class="next" onclick="moveSlide('church', 1)">❯</button>
                     </div>
@@ -57,33 +60,89 @@
                     <div class="carousel-wrapper">
                         <button class="prev" onclick="moveSlide('Group', -1)">❮</button>
                         <div class="slider-container">
-                            <div class="item"><img src="images/挖寶合照1.jpg" alt="挖寶合照1"></div>
-                            <div class="item"><img src="images/白袍合照1.jpg" alt="白袍合照1"></div>
-                            <div class="item"><img src="images/白袍合照2.jpg" alt="白袍合照2"></div>
-                            <div class="item"><img src="images/婚禮合照1.jpg" alt="婚禮合照1"></div>
-                            <div class="item"><img src="images/婚禮合照2.jpg" alt="婚禮合照2"></div>
-                            <div class="item"><img src="images/婚禮合照3.jpg" alt="婚禮合照3"></div>
-                            <div class="item"><img src="images/婚禮合照4.jpg" alt="婚禮合照4"></div>
-                            <div class="item"><img src="images/婚禮合照5.jpg" alt="婚禮合照5"></div>
+                            <div class="item"><img src="images/挖寶合照1.jpg" alt="挖寶合照1" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/白袍合照1.jpg" alt="白袍合照1" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/白袍合照2.jpg" alt="白袍合照2" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/婚禮合照1.jpg" alt="婚禮合照1" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/婚禮合照2.jpg" alt="婚禮合照2" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/婚禮合照3.jpg" alt="婚禮合照3" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/婚禮合照4.jpg" alt="婚禮合照4" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/婚禮合照5.jpg" alt="婚禮合照5" onclick="openLightbox(this)">
+                            </div>
                         </div>
                         <button class="next" onclick="moveSlide('Group', 1)">❯</button>
                     </div>
                     <p class="slider-note">聖徒團契合照</p>
                 </div>
 
+                <div id="event_Valentine" class="slider-group">
+                    <div class="carousel-wrapper">
+                        <button class="prev" onclick="moveSlide('event_Valentine', -1)">❮</button>
+                        <div class="slider-container">
+                            <div class="item"><img src="images/情人節/抖腳狂人鳥1.jpg" alt="抖腳狂人鳥1"
+                                    onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/抖腳狂人鳥2.jpg" alt="抖腳狂人鳥2"
+                                    onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/喬.jpg" alt="喬" onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/耶穌.jpg" alt="耶穌" onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/赤芍.jpg" alt="赤芍" onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/小椪皮.jpg" alt="小椪皮" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/小茶茶.jpg" alt="小茶茶" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/蟹道人.jpg" alt="蟹道人" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/大雞蛋.jpg" alt="大雞蛋" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/第三名大雞蛋.jpg" alt="第三名大雞蛋"
+                                    onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/第二名小椪皮.jpg" alt="第二名小椪皮"
+                                    onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/第一名小茶茶.jpg" alt="第一名小茶茶"
+                                    onclick="openLightbox(this)"></div>
+                            <div class="item"><img src="images/情人節/團照1.jpg" alt="團照1" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/團照2.jpg" alt="團照2" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/團照4.jpg" alt="團照3" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/情人節/團照4.jpg" alt="團照4" onclick="openLightbox(this)">
+                            </div>
+                        </div>
+                        <button class="next" onclick="moveSlide('event_Valentine', 1)">❯</button>
+                    </div>
+                    <p class="slider-note">情人節暨新年活動攝影大賽</p>
+                </div>
+
                 <div id="event_Christmas" class="slider-group">
                     <div class="carousel-wrapper">
                         <button class="prev" onclick="moveSlide('event_Christmas', -1)">❮</button>
                         <div class="slider-container">
-                            <div class="item"><img src="images/聖誕節合照1.jpg" alt="聖誕節合照1"></div>
-                            <div class="item"><img src="images/聖誕節合照2.jpg" alt="聖誕節合照2"></div>
-                            <div class="item"><img src="images/聖誕節合照3.jpg" alt="聖誕節合照3"></div>
-                            <div class="item"><img src="images/聖誕節合照4.jpg" alt="聖誕節合照4"></div>
-                            <div class="item"><img src="images/聖誕節合照5.jpg" alt="聖誕節合照5"></div>
-                            <div class="item"><img src="images/聖誕節合照6.jpg" alt="聖誕節合照6"></div>
-                            <div class="item"><img src="images/聖誕節合照7.jpg" alt="聖誕節合照7"></div>
-                            <div class="item"><img src="images/聖誕節合照8.jpg" alt="聖誕節合照8"></div>
-                            <div class="item"><img src="images/聖誕節合照9.jpg" alt="聖誕節合照9"></div>
+                            <div class="item"><img src="images/聖誕節合照1.jpg" alt="聖誕節合照1" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照2.jpg" alt="聖誕節合照2" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照3.jpg" alt="聖誕節合照3" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照4.jpg" alt="聖誕節合照4" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照5.jpg" alt="聖誕節合照5" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照6.jpg" alt="聖誕節合照6" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照7.jpg" alt="聖誕節合照7" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照8.jpg" alt="聖誕節合照8" onclick="openLightbox(this)">
+                            </div>
+                            <div class="item"><img src="images/聖誕節合照9.jpg" alt="聖誕節合照9" onclick="openLightbox(this)">
+                            </div>
                         </div>
                         <button class="next" onclick="moveSlide('event_Christmas', 1)">❯</button>
                     </div>
@@ -95,13 +154,21 @@
         <section id="join">
             <h2>加入我們</h2>
             <p>無論你是剛入坑的豆芽，還是身經百戰的光之戰士，都歡迎加入我們的行列！在這裡沒有進度壓力，按自己步調遊玩。</p>
-            <a href="你的Discord邀請連結請貼在這裡" class="btn" target="_blank">前往 Discord 伺服器</a>
+            <p>請到巴哈姆特海都1-35拜訪我們。</p>
+            <!-- <a href="你的Discord邀請連結請貼在這裡" class="btn" target="_blank">前往 Discord 伺服器</a>  -->
         </section>
     </main>
 
     <footer>
         <p>© 2026 FF14 基督教公會. All rights reserved.</p>
     </footer>
+
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
 
     <script>
         let currentSlideIndex = 0;
@@ -138,7 +205,7 @@
         // 2. 輪播器控制
         function moveSlide(sliderId, direction) {
             const container = document.querySelector(`#${sliderId} .slider-container`);
-            if (!container) return; 
+            if (!container) return;
 
             const items = container.querySelectorAll('.item');
             const totalSlides = items.length;
@@ -157,6 +224,20 @@
                 left: targetLeft,
                 behavior: 'smooth'
             });
+        }
+
+        // 開啟放大檢視
+        function openLightbox(imgElement) {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+
+            lightbox.style.display = "flex"; // 顯示彈窗
+            lightboxImg.src = imgElement.src; // 將點擊的圖片路徑傳給彈窗
+        }
+
+        // 關閉放大檢視
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
         }
     </script>
 </body>

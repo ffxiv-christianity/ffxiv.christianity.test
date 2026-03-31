@@ -176,7 +176,7 @@ section h2 {
     width: 100%;
     display: block;             /* 移除圖片下方的微小間隙 */
     aspect-ratio: 16 / 9;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* 左右切換按鈕樣式 */
@@ -208,8 +208,49 @@ section h2 {
     color: #8a7b63;
 }
 
+/* 彈窗背景 */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    cursor: zoom-out;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 放大後的圖片樣式 */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    border: 3px solid #f0efd3; 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    border-radius: 4px;
+    animation: zoomIn 0.3s ease; 
+}
+
+/* 關閉按鈕 */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 /* 按鈕樣式 (Discord) */
-.btn {
+/*.btn {
     display: inline-block;
     background: #3498db;
     color: #fff;
@@ -222,7 +263,7 @@ section h2 {
 
 .btn:hover {
     background: #2980b9;
-}
+}*/
 
 /* 頁尾 */
 footer {
