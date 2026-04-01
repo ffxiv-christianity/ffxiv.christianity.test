@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FF14 基督教公會 | 艾奧傑亞的團契</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260401">
 </head>
 
 <body>
@@ -154,7 +155,7 @@
         <section id="join">
             <h2>加入我們</h2>
             <p>無論你是剛入坑的豆芽，還是身經百戰的光之戰士，都歡迎加入我們的行列！在這裡沒有進度壓力，按自己步調遊玩。</p>
-            <p>請到巴哈姆特海都1-35拜訪我們。</p>
+            <p>請至巴哈姆特海都1-35拜訪我們。</p>
             <!-- <a href="你的Discord邀請連結請貼在這裡" class="btn" target="_blank">前往 Discord 伺服器</a>  -->
         </section>
     </main>
@@ -163,46 +164,40 @@
         <p>© 2026 FF14 基督教公會. All rights reserved.</p>
     </footer>
 
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-btn">&times;</span>
+<div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</button>
         <img class="lightbox-content" id="lightbox-img">
+        <button class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</button>
     </div>
-
 
     <script>
         let currentSlideIndex = 0;
+        let currentLightboxIndex = 0;
+        let currentLightboxImages = [];
 
+        // 1. 分類切換邏輯
         function showSlider(sliderId) {
-            // 隱藏所有組別並移除按鈕高亮
             const groups = document.querySelectorAll('.slider-group');
             groups.forEach(g => g.classList.remove('active'));
 
             const btns = document.querySelectorAll('.tab-btn');
             btns.forEach(b => b.classList.remove('active'));
 
-            // 顯示指定的組別
             const target = document.getElementById(sliderId);
             if (target) {
                 target.classList.add('active');
-
-                // 重置索引與捲動位置
                 currentSlideIndex = 0;
                 const container = target.querySelector('.slider-container');
-                if (container) {
-                    container.scrollLeft = 0;
-                }
+                if (container) container.scrollLeft = 0;
             }
 
-            // 讓點擊的那個按鈕變色
-            if (window.event && window.event.currentTarget) {
-                window.event.currentTarget.classList.add('active');
-            } else if (typeof event !== 'undefined' && event.currentTarget) {
+            if (event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
             }
         }
 
-        // 2. 輪播器控制
+        // 2. 輪播器控制邏輯
         function moveSlide(sliderId, direction) {
             const container = document.querySelector(`#${sliderId} .slider-container`);
             if (!container) return;
@@ -211,35 +206,49 @@
             const totalSlides = items.length;
 
             currentSlideIndex += direction;
-
-            if (currentSlideIndex >= totalSlides) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = totalSlides - 1;
-            }
+            if (currentSlideIndex >= totalSlides) currentSlideIndex = 0;
+            else if (currentSlideIndex < 0) currentSlideIndex = totalSlides - 1;
 
             const targetLeft = container.clientWidth * currentSlideIndex;
-
-            container.scrollTo({
-                left: targetLeft,
-                behavior: 'smooth'
-            });
+            container.scrollTo({ left: targetLeft, behavior: 'smooth' });
         }
 
-        // 開啟放大檢視
+        // 3. Lightbox 手動控制邏輯
         function openLightbox(imgElement) {
             const lightbox = document.getElementById("lightbox");
             const lightboxImg = document.getElementById("lightbox-img");
-
-            lightbox.style.display = "flex"; // 顯示彈窗
-            lightboxImg.src = imgElement.src; // 將點擊的圖片路徑傳給彈窗
+            
+            // 抓取當前 Slider 內的所有圖片，以便手動切換
+            const container = imgElement.closest('.slider-container');
+            const allImages = Array.from(container.querySelectorAll('img'));
+            
+            currentLightboxImages = allImages.map(img => img.src);
+            currentLightboxIndex = currentLightboxImages.indexOf(imgElement.src);
+            
+            lightbox.style.display = "flex";
+            lightboxImg.src = currentLightboxImages[currentLightboxIndex];
+            document.body.style.overflow = "hidden"; // 防止背景捲動
         }
 
-        // 關閉放大檢視
+        function changeLightboxImage(direction) {
+            currentLightboxIndex = (currentLightboxIndex + direction + currentLightboxImages.length) % currentLightboxImages.length;
+            document.getElementById("lightbox-img").src = currentLightboxImages[currentLightboxIndex];
+        }
+
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
+            document.body.style.overflow = "auto";
         }
+
+        // 鍵盤支援
+        document.addEventListener('keydown', function(e) {
+            const lb = document.getElementById("lightbox");
+            if (lb.style.display === "flex") {
+                if (e.key === "ArrowLeft") changeLightboxImage(-1);
+                if (e.key === "ArrowRight") changeLightboxImage(1);
+                if (e.key === "Escape") closeLightbox();
+            }
+        });
     </script>
 </body>
-
 </html>
