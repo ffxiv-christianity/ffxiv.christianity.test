@@ -36,9 +36,9 @@ function toggleHotbar() {
     hotbarWrapper.classList.toggle('hidden');
     
     if (hotbarWrapper.classList.contains('hidden')) {
-        toggleBtn.innerText = '▲'; 
+        toggleBtn.innerText = '︿'; 
     } else {
-        toggleBtn.innerText = '▼'; 
+        toggleBtn.innerText = '﹀'; 
     }
 }
 
@@ -48,36 +48,18 @@ function toggleHotbar() {
 window.addEventListener('load', function() {
     const bgm = document.getElementById('bgm');
     const btn = document.getElementById('music-toggle');
-    const icon = btn ? btn.querySelector('.icon') : null;
-
-    const shouldPlay = localStorage.getItem('playBgm');
-    const isFromIndex = localStorage.getItem('resetMusic');
-
-    const savedTime = localStorage.getItem('musicCurrentTime');
+    const isFromSecret = localStorage.getItem('playBgm');
 
     if (bgm) {
         bgm.volume = 0.8;
 
-        // Index to Home 
-        if (isFromIndex === 'true') {
+        // secret.html to otherside.html 
+        if (isFromSecret === 'true') {
             bgm.currentTime = 0;
-            localStorage.removeItem('resetMusic');
+            localStorage.removeItem('playBgm');
             playAndSync(bgm, btn);
         } 
-        else if (shouldPlay === 'true') {
-            if (savedTime) {
-                const offset = 0.5;
-                bgm.currentTime = parseFloat(savedTime) + offset;
-            }
-            playAndSync(bgm, btn);
-        }
     }
-
-    setInterval(() => {
-        if (bgm && !bgm.paused) {
-            localStorage.setItem('musicCurrentTime', bgm.currentTime);
-        }
-    }, 1000);
 });
 
 
@@ -89,7 +71,7 @@ function playAndSync(bgm, btn) {
         
         // Fade-in
         let targetVolume = 0.5; 
-        let duration = 500;    
+        let duration = 800;    
         let step = 0.05;       
         let interval = duration / (targetVolume / step);
         
@@ -111,15 +93,14 @@ function toggleMusic() {
     const bgm = document.getElementById('bgm');
     const btn = document.getElementById('music-toggle');
     
+    if (!bgm || !btn) return;
+
     if (bgm.paused) {
+        bgm.volume = 0.5; 
         bgm.play();
         btn.classList.add('playing');
-        localStorage.setItem('playBgm', 'true');
     } else {
         bgm.pause();
         btn.classList.remove('playing');
-        localStorage.setItem('playBgm', 'false');
-
-        localStorage.setItem('musicCurrentTime', bgm.currentTime);
     }
 }
