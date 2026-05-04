@@ -220,16 +220,16 @@ section h2 {
         min-height: 70px !important;
         padding: 0 5px !important;
         justify-content: center;
-        overflow: visible !important; /* 確保全局 Header 允許下拉選單 */
+        overflow: visible !important; 
     }
 
     .side-menu {
-        min-width: 180px !important; /* 手機版選單寬度稍微收斂 */
+        min-width: 180px !important; 
     }
 
     .side-menu a {
-        padding: 15px 20px !important; /* 縮小內距，節省垂直空間 */
-        font-size: 0.95rem !important; /* 適合手指點擊的大小 */
+        padding: 15px 20px !important; 
+        font-size: 0.95rem !important; 
     }
 
     .menu-btn {

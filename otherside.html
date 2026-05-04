@@ -23,15 +23,16 @@
         <button class="hotbar-toggle" onclick="toggleHotbar()" id="hotbar-btn">﹀</button>
 
         <nav class="hotbar">
-            <a href="#home" onclick="switchBlock(event, 'block-home', this)" class="hotbar-slot active-slot"
+            <a href="#home" onclick="switchBlock(event, 'block-home', this)" class="hotbar-slot"
                 data-tooltip="回到首頁">
                 <img src="images/otherside/home.png" alt="Home" class="slot-icon">
             </a>
-            <a href="#about" onclick="switchBlock(event, 'block-about', this)" class="hotbar-slot"
+            <a href="#about" onclick="switchBlock(event, 'block-about', this)" class="hotbar-slot" 
                 data-tooltip="關於我們">
                 <img src="images/otherside/about.png" alt="about" class="slot-icon">
             </a>
-            <a href="#service" onclick="switchBlock(event, 'block-service', this)" class="hotbar-slot" data-tooltip="服務項目">
+            <a href="#service" onclick="switchBlock(event, 'block-service', this)" class="hotbar-slot"
+                data-tooltip="服務項目">
                 <img src="images/otherside/service.png" alt="Service" class="slot-icon">
             </a>
             <a href="#members" onclick="switchBlock(event, 'block-members', this)" class="hotbar-slot"
@@ -44,7 +45,7 @@
         </nav>
     </div>
 
-    <section id="block-home" class="other-block active">
+    <section id="block-home" class="other-block">
         <picture>
             <source media="(max-width: 768px)" srcset="images/otherside/耶穌張臂_直.jpg">
 
@@ -63,7 +64,103 @@
     <section id="block-service" class="other-block">
         <div class="content-wrapper">
             <h2>服務項目</h2>
-            <p>店內服務、菜單...</p>
+
+            <!-- 卡片式分類導覽列 -->
+            <div class="service-tabs-container">
+                <button class="scroll-arrow left" onclick="scrollTabs(-1)">〈</button>
+
+                <div class="service-tabs-viewport" id="tabs-viewport">
+                    <div class="category-card active" onclick="showCategory('menu')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/湯匙貓.JPG" alt=""></div>
+                        <span>精緻菜單</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('designate')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/主墨鏡.png" alt=""></div>
+                        <span>店員指名</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('others')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/十字架鼠.JPG" alt=""></div>
+                        <span>CASINO</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('others')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/宿醉貓.JPG" alt=""></div>
+                        <span>慶生派對</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('others')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/十字架鼠.JPG" alt=""></div>
+                        <span>教會地下博奕場</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('others')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/十字架鼠.JPG" alt=""></div>
+                        <span>教會地下博奕場</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('others')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/十字架鼠.JPG" alt=""></div>
+                        <span>教會地下博奕場</span>
+                    </div>
+                    <div class="category-card" onclick="showCategory('others')">
+                        <div class="circle-img"><img src="images/otherside/service/demo/十字架鼠.JPG" alt=""></div>
+                        <span>教會地下博奕場</span>
+                    </div>
+                </div>
+
+                <button class="scroll-arrow right" onclick="scrollTabs(1)">〉</button>
+            </div>
+
+            <!-- 捲軸內容區 -->
+            <div class="service-content-area">
+                <!-- 菜單 -->
+                <div id="cat-menu" class="service-cat-block active">
+                    <div class="service-item-row menu-style">
+                        <p class="cat-label">MENU / 精緻菜單</p>
+                        <div class="item-thumb square"><img src="images/otherside/service/demo/burger.jpg"></div>
+                        <div class="service-info">
+                            <h3>手作起司牛肉漢堡排</h3>
+                            <p>手打漢堡排、生菜沙拉、火腿、炒蛋、香酥軟法。</p>
+                        </div>
+                        <div class="service-price">50,000 Gil</div>
+                    </div>
+                    <div class="service-item-row menu-style">
+                        <!-- <p class="cat-label"></p> -->
+                        <div class="item-thumb square"><img src="images/otherside/service/demo/口水狗.JPG"></div>
+                        <div class="service-info">
+                            <h3>耶穌手作蛋包飯</h3>
+                            <p>聖歐姆蛋、Q彈米飯、番茄醬、耶穌的愛。</p>
+                        </div>
+                        <div class="service-price">100,000 Gil</div>
+                    </div>
+                </div>
+
+                <!-- 指名類別 -->
+                <div id="cat-designate" class="service-cat-block">
+                    <div class="service-item-row staff-style">
+                        <p class="cat-label">STAFF / 店員指名</p>
+                        <div class="item-thumb rectangle"><img src="images/otherside/service/demo/察覺貓.JPG"></div>
+                        <div class="service-info">
+                            <h3>首席修女 ID1</h3>
+                            <p>提供專屬的心靈告解服務。</p>
+                        </div>
+                        <div class="service-price">100,000 Gil</div>
+                    </div>
+                </div>
+
+                <!-- 其他類別 -->
+                <div id="cat-others" class="service-cat-block">
+                    <div class="service-item-row other-style">
+                        <p class="cat-label">CASINO / 教會地下博奕場</p>
+                        <div class="item-hero"><img src="images/otherside/service/demo/魔法貓.JPG"></div>
+                        <div class="info-body">
+                            <p>本場所受耶穌祝福</p>
+                            <p>純Gil賭局，健康又安全。</p>
+                            <ul class="feature-list">
+                                <li>✦ 二十一點專業牌桌</li>
+                                <li>✦ 幸運輪盤挑戰</li>
+                            </ul>
+                        </div>
+                        <div class="service-price">FREE ENTRANCE</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -113,7 +210,7 @@
                     <div class="member-text-box">
                         <h3>ID4</h3>
                         <p>職階：XX<br>專長：(負責工作)<br>「自我介紹...」</p>
-                        <p>測試行</p>
+                        <p>測試行測試行測試行測試行測試行測試行測試行測試行</p>
                         <p>測試行</p>
                         <p>測試行</p>
                         <p>測試行</p>

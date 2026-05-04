@@ -8,21 +8,17 @@ html {
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
-
-    /* 🌟 核心：從左上的幽光紫，過渡到右下的深邃黑紫 */
     background: linear-gradient(135deg,
             #2a1f3d 0%,
-            /* 左上：帶有一點灰度的幽光紫 */
+            /* 左上 */
             #1e142d 40%,
-            /* 中間：沉穩的深紫羅蘭色 */
+            /* 中間 */
             #130b1c 80%,
-            /* 右下：幾乎接近黑色的極深紫，增加空間深度 */
+            /* 右下 */
             #0a0510 100%
-            /* 邊緣：最深的暗影 */
+            /* 邊緣 */
         );
-
     color: #e6d5e8;
-    /* 文字顏色改為帶有微紫光的淺灰色，確保閱讀性 */
     font-family: "微軟正黑體", "Noto Sans TC", sans-serif;
 }
 
@@ -177,6 +173,333 @@ body::before {
     object-fit: cover;
     object-position: center center;
     z-index: -1;
+}
+
+/* =========================================
+   3. 服務項目 (#service) 
+   ========================================= */
+#block-service {
+    align-items: flex-start;
+    padding-top: clamp(10px, 2vh, 20px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#block-service .content-wrapper {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 4vw;
+    box-sizing: border-box;
+}
+
+#block-service h2 {
+    margin-top: 0;
+    margin-bottom: 3.5vh;
+    text-align: center;
+}
+
+/* --- 1. 導覽標籤與滑動列 --- */
+.service-tabs-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.service-tabs-viewport::after,
+.service-tabs-viewport::before {
+    content: '';
+    margin: auto;
+}
+
+.service-tabs-viewport {
+    display: flex;
+    gap: 40px;
+    padding: 10px 0;
+    /* flex-grow: 1; */
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+/* 隱藏捲軸(Chrome) */
+.service-tabs-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+/* 圓形照片卡片按鈕 */
+.category-card {
+    flex: 0 0 100px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    position: relative;
+}
+
+.category-card span {
+    color: #fce3a1;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    white-space: nowrap; 
+    display: block;
+    width: 100%;
+}
+
+.category-card:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: translateY(-5px);
+}
+
+.category-card:hover .circle-img {
+    border-color: #fce3a1;
+    box-shadow: 0 0 20px rgba(252, 227, 161, 0.6);
+    background: rgba(252, 227, 161, 0.1);
+}
+
+.category-card.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.circle-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(252, 227, 161, 0.3);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.circle-img img {
+    width: 100%;      
+    height: 100%;     
+    object-fit: cover;
+    display: block;
+}
+
+.category-card.active .circle-img {
+    border-color: #fce3a1;
+    box-shadow: 0 0 15px rgba(252, 227, 161, 0.4);
+}
+
+/* 左右箭頭 */
+.scroll-arrow {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: #fce3a1;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.scroll-arrow:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(252, 227, 161, 0.8);
+    transform: scale(1.2);
+}
+
+/* --- 2. 捲軸內容區 (靠左設定) --- */
+.service-content-area {
+    width: 100%;
+}
+
+/* --- 圖片區塊樣式 --- */
+.item-thumb {
+    flex-shrink: 0;
+    margin-right: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111;
+    border-radius: 8px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 菜單用：正方形 */
+.item-thumb.square {
+    width: 120px;
+    height: 120px;
+    
+    flex-shrink: 0;
+    margin-right: 25px; 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #000;
+    border-radius: 12px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 指名用：長方形 (直式) */
+.item-thumb.rectangle {
+    width: 120px;
+    height: 160px;
+    flex-shrink: 0;
+    margin-right: 25px;
+    border-radius: 8px;
+}
+
+.item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-cat-block {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 0.4s ease;
+}
+
+.service-cat-block.active {
+    display: flex;
+}
+
+.service-item-row {
+    position: relative;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #fce3a1;
+    padding: 15px 25px; 
+    display: flex;
+    align-items: center; 
+    transition: all 0.3s ease;
+    min-height: 140px;
+}
+
+.service-item-row:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.service-info {
+    flex-grow: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ .service-info h3 {
+    color: #fce4a1dd;
+} 
+
+.service-price {
+    flex-shrink: 0;
+    color: #fce3a1;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: auto; 
+    padding-left: 20px;
+    margin-top: 0; 
+    display: flex;
+    align-items: center;
+}
+
+/* other-style */
+.service-item-row.other-style {
+    display: flex;
+    flex-direction: row; 
+    gap: 40px;          
+    padding: 40px;      
+    align-items: flex-start; 
+    min-height: 500px;
+}
+
+.other-style .item-hero {
+    flex: 0 0 50%;      
+    height: 450px;      
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(252, 227, 161, 0.3);
+}
+
+.other-style .item-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.other-style .info-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;    
+    align-items: flex-start;
+}
+
+.other-style .info-body p {
+    margin: 0 0 10px 0;
+    line-height: 1.4; 
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.other-style .info-body p:last-of-type {
+    margin-bottom: 25px; 
+}
+
+/* 額外增加的小清單特效 */
+.other-style .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;       
+    flex-direction: column; 
+    gap: 15px;           
+}
+
+.other-style .feature-list li {
+    font-size: 1rem;
+    color: #fce3a1;
+    opacity: 0.9;
+    padding-left: 5px;
+    border-left: 2px solid rgba(252, 227, 161, 0.3);
+    padding: 5px 15px;
+}
+
+.other-style .service-price {
+    margin-left: auto;
+    align-self: center;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+/* 漂浮label */
+.cat-label {
+    position: absolute;
+    top: -35px;         
+    left: 10px;  
+    background: #fce4a1 !important;
+    color: #1a052f !important;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    width: auto;
+    display: block;
+    z-index: 5;
 }
 
 /* =========================================
@@ -382,6 +705,7 @@ body::before {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
+    overflow: visible !important;
     padding: 8px 16px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -391,7 +715,6 @@ body::before {
 }
 
 .hotbar .hotbar-slot:last-child {
-    /* 使用剛才定義的變數推開空間 */
     margin-left: var(--separator-gap);
 }
 
@@ -399,7 +722,6 @@ body::before {
     content: '✦';
     position: absolute;
 
-    /* 推開距離的一半 (乘 -0.5) 再扣掉 flex gap 的一半 (3px) */
     left: calc(var(--separator-gap) * -0.5 - 3px);
     top: 50%;
     transform: translate(-50%, -50%);
@@ -427,10 +749,7 @@ body::before {
 }
 
 .hotbar-slot:hover {
-    background:
-        linear-gradient(#fce3a1, #fce3a1) center bottom / 50% 2px no-repeat,
-        linear-gradient(to top, rgba(252, 227, 161, 0.15), transparent);
-
+    background: linear-gradient(to top, rgba(252, 227, 161, 0.15), transparent);
     border: 1px solid transparent;
     transform: translateY(-2px);
 }
@@ -450,9 +769,7 @@ body::before {
 }
 
 .hotbar-slot.active-slot {
-    background:
-        linear-gradient(#fce3a1, #fce3a1) center bottom / 60% 2px no-repeat,
-        linear-gradient(to top, rgba(252, 227, 161, 0.25), transparent);
+    background: linear-gradient(to top, rgba(252, 227, 161, 0.25), transparent);
 
     border: 1px solid transparent;
     box-shadow: inset 0 -15px 15px -15px rgba(252, 227, 161, 0.5);
@@ -467,9 +784,10 @@ body::before {
 .hotbar-slot::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 115%;
+    top: 120%;        
     left: 50%;
     transform: translateX(-50%);
+    
     background: rgba(15, 15, 15, 0.9);
     color: #e0d5c1;
     padding: 4px 10px;
@@ -478,9 +796,15 @@ body::before {
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
     border: 1px solid #5a5040;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.hotbar-slot:hover::after {
+    opacity: 1;
+    top: 110%;           
 }
 
 /* =========================================
@@ -557,9 +881,7 @@ body::before {
 /* 2K 螢幕 (大於 1920px) */
 @media (min-width: 1921px) {
     .hotbar-wrapper {
-        .hotbar-wrapper {
-            bottom: 40px;
-        }
+        bottom: 40px;
     }
 
     .hotbar-wrapper.hidden {
