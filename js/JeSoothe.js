@@ -58,7 +58,7 @@ window.addEventListener('load', function () {
     if (bgm) {
         bgm.volume = 0.8;
 
-        // secret.html to otherside.html 
+        // secret.html to JeSoothe.html 
         if (isFromSecret === 'true') {
             bgm.currentTime = 0;
             localStorage.removeItem('playBgm');
