@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>穌一下．JeSoothe</title>
+    <link rel="icon" type="image/png" href="images/JeSoothe/260520/Logos/3.png">
     <link rel="stylesheet" href="css/JeSoothe.css?v=260427">
 </head>
 
@@ -23,12 +24,10 @@
         <button class="hotbar-toggle" onclick="toggleHotbar()" id="hotbar-btn">﹀</button>
 
         <nav class="hotbar">
-            <a href="#home" onclick="switchBlock(event, 'block-home', this)" class="hotbar-slot"
-                data-tooltip="回到首頁">
+            <a href="#home" onclick="switchBlock(event, 'block-home', this)" class="hotbar-slot" data-tooltip="回到首頁">
                 <img src="images/JeSoothe/home.png" alt="Home" class="slot-icon">
             </a>
-            <a href="#about" onclick="switchBlock(event, 'block-about', this)" class="hotbar-slot" 
-                data-tooltip="關於我們">
+            <a href="#about" onclick="switchBlock(event, 'block-about', this)" class="hotbar-slot" data-tooltip="關於我們">
                 <img src="images/JeSoothe/about.png" alt="about" class="slot-icon">
             </a>
             <a href="#service" onclick="switchBlock(event, 'block-service', this)" class="hotbar-slot"
@@ -49,12 +48,15 @@
         <picture>
             <source media="(max-width: 768px)" srcset="images/JeSoothe/耶穌張臂_直.jpg">
 
-            <img src="images/JeSoothe/耶穌張臂_右.jpg" alt="主視覺" class="fullscreen-bg">
+            <img src="images/JeSoothe/260520/P2_Home_BG.png" alt="主視覺" class="fullscreen-bg">
         </picture>
         <div class="content-wrapper"> </div>
     </section>
 
     <section id="block-about" class="other-block">
+        <picture>
+            <img src="images/JeSoothe/260520/P1_About_BG.png" alt="主視覺" class="fullscreen-bg">
+        </picture>
         <div class="content-wrapper">
             <h2>關於我們</h2>
             <p>RP店描述、地址、規則...</p>
@@ -62,6 +64,9 @@
     </section>
 
     <section id="block-service" class="other-block">
+        <picture>
+            <img src="images/JeSoothe/260520/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
+        </picture>
         <div class="content-wrapper">
             <h2>服務項目</h2>
 
@@ -165,72 +170,118 @@
     </section>
 
     <section id="block-members" class="other-block">
+        <picture>
+            <img src="images/JeSoothe/260520/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
+        </picture>
         <div class="content-wrapper">
             <h2>店員介紹</h2>
 
-            <div class="members-grid">
-                <div class="member-card">
-                    <div class="member-img-box">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="店員照片">
-                        <!-- <p>照片</p> -->
+            <div class="members-layout">
+                <div class="members-sidebar">
+                    <div class="member-avatar-btn active" onclick="showMember('member-1', this)">
+                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID1">
                     </div>
-                    <div class="member-text-box">
-                        <h3>ID1</h3>
-                        <p>職階：店長<br>專長：(負責工作)<br>「自我介紹...」</p>
+                    <div class="member-avatar-btn" onclick="showMember('member-2', this)">
+                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID2">
                     </div>
+                    <div class="member-avatar-btn" onclick="showMember('member-3', this)">
+                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID3">
+                    </div>
+                    <div class="member-avatar-btn" onclick="showMember('member-4', this)">
+                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID4">
+                    </div>
+                     <div class="member-avatar-btn" onclick="showMember('member-5', this)">
+                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID5">
+                    </div>                   
                 </div>
 
-                <div class="member-card">
-                    <div class="member-img-box">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="店員照片">
-                        <!-- <p>照片</p> -->
-                    </div>
-                    <div class="member-text-box">
-                        <h3>ID2</h3>
-                        <p>職階：XX<br>專長：(負責工作)<br>「自我介紹...」</p>
-                    </div>
-                </div>
+                <div class="members-content">
 
-                <div class="member-card">
-                    <div class="member-img-box">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="店員照片">
-                        <!-- <p>照片</p> -->
+                    <div id="member-1" class="member-detail-card active">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title">老大</span>
+                                <h3 class="member-id">草莓蘋果派</h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">斜咖</span>
+                                <span class="tag">賭徒</span>
+                                <span class="tag">裝修</span>
+                                <span class="tag">高難</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「拒絕男色，從你我做起。...蛤？你剛剛是說兔女郎人男嗎？哪裡有兔女郎人男！！！？」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/Boss.jpg" alt="ID1 立繪">
+                        </div>
                     </div>
-                    <div class="member-text-box">
-                        <h3>ID3</h3>
-                        <p>職階：XX<br>專長：(負責工作)<br>「自我介紹...」</p>
-                    </div>
-                </div>
 
-                <div class="member-card">
-                    <div class="member-img-box">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="店員照片">
-                        <!-- <p>照片</p> -->
+                    <div id="member-2" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title">副店長</span>
+                                <h3 class="member-id">草莓蘋果派草</h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">職階：副店長</span>
+                                <span class="tag">專長：塔羅占卜</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「命運的輪盤已經開始轉動...」</p>
+                                <p>第二位店員的專屬介紹。</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID2 立繪">
+                        </div>
                     </div>
-                    <div class="member-text-box">
-                        <h3>ID4</h3>
-                        <p>職階：XX<br>專長：(負責工作)<br>「自我介紹...」</p>
-                        <p>測試行測試行測試行測試行測試行測試行測試行測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                        <p>測試行</p>
-                    </div>
-                </div>
 
+                    <div id="member-3" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title">副店長</span>
+                                <h3 class="member-id">ID3</h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">職階：副店長</span>
+                                <span class="tag">專長：塔羅占卜</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「命運的輪盤已經開始轉動...」</p>
+                                <p>第二位店員的專屬介紹。</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID3 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-4" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title">副店長</span>
+                                <h3 class="member-id">ID4</h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">職階：副店長</span>
+                                <span class="tag">專長：塔羅占卜</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「命運的輪盤已經開始轉動...」</p>
+                                <p>第二位店員的專屬介紹。</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID4 立繪">
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
+    </section>
     </section>
 
     <script src="js/JeSoothe.js"></script>

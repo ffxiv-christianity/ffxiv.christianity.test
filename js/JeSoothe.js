@@ -152,3 +152,29 @@ window.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState(null, null, '#home');
     }
 });
+
+
+// =========================================
+// 店員介紹 (#members) 
+// =========================================
+// --- 切換店員介紹 ---
+function showMember(memberId, clickedBtn) {
+    // 1. 移除所有頭像的發光 (active) 狀態
+    const allBtns = document.querySelectorAll('.member-avatar-btn');
+    allBtns.forEach(btn => btn.classList.remove('active'));
+
+    // 2. 移除所有詳細卡片的顯示 (active) 狀態
+    const allCards = document.querySelectorAll('.member-detail-card');
+    allCards.forEach(card => card.classList.remove('active'));
+
+    // 3. 把點擊的頭像加上發光狀態
+    if (clickedBtn) {
+        clickedBtn.classList.add('active');
+    }
+
+    // 4. 把對應的詳細資料顯示出來
+    const targetCard = document.getElementById(memberId);
+    if (targetCard) {
+        targetCard.classList.add('active');
+    }
+}
