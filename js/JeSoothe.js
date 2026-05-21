@@ -139,7 +139,9 @@ function scrollTabs(direction) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    // =========================================
     // 取得當前的 Hash，如果沒有則預設為 #home
+    // =========================================    
     let currentHash = window.location.hash || '#home';
     const targetBtn = document.querySelector(`.hotbar-slot[href="${currentHash}"]`);
     const targetId = 'block-' + currentHash.replace('#', '');
@@ -151,6 +153,27 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!window.location.hash) {
         window.history.replaceState(null, null, '#home');
     }
+
+    // =========================================
+    // (#members) 預設顯示第一位店員
+    // =========================================
+    const defaultMemberBtn = document.querySelector('.member-avatar-btn.active');
+    const defaultMemberCard = document.querySelector('.member-detail-card.active');
+    
+    if (defaultMemberBtn && defaultMemberCard) {
+        const titleText = defaultMemberBtn.getAttribute('data-title') || '';
+        const nameText = defaultMemberBtn.getAttribute('data-name') || '';
+        
+        const cardTitle = defaultMemberCard.querySelector('.dynamic-title');
+        const cardName = defaultMemberCard.querySelector('.dynamic-name');
+        
+        if (cardTitle) cardTitle.textContent = titleText;
+        if (cardName) cardName.textContent = nameText;
+
+        if (window.innerWidth <= 768) {
+            defaultMemberBtn.parentNode.insertBefore(defaultMemberCard, defaultMemberBtn.nextSibling);
+        }
+    }
 });
 
 
@@ -159,22 +182,42 @@ window.addEventListener('DOMContentLoaded', () => {
 // =========================================
 // --- 切換店員介紹 ---
 function showMember(memberId, clickedBtn) {
-    // 1. 移除所有頭像的發光 (active) 狀態
+    const isAlreadyActive = clickedBtn && clickedBtn.classList.contains('active');
+
+    // 清除所有 active 狀態
     const allBtns = document.querySelectorAll('.member-avatar-btn');
     allBtns.forEach(btn => btn.classList.remove('active'));
 
-    // 2. 移除所有詳細卡片的顯示 (active) 狀態
     const allCards = document.querySelectorAll('.member-detail-card');
     allCards.forEach(card => card.classList.remove('active'));
 
-    // 3. 把點擊的頭像加上發光狀態
+    if (isAlreadyActive) {
+        return;
+    }
+
     if (clickedBtn) {
         clickedBtn.classList.add('active');
     }
 
-    // 4. 把對應的詳細資料顯示出來
     const targetCard = document.getElementById(memberId);
     if (targetCard) {
+        if (clickedBtn) {
+            const titleText = clickedBtn.getAttribute('data-title') || '';
+            const nameText = clickedBtn.getAttribute('data-name') || '';
+
+            const cardTitle = targetCard.querySelector('.dynamic-title');
+            const cardName = targetCard.querySelector('.dynamic-name');
+
+            if (cardTitle) cardTitle.textContent = titleText;
+            if (cardName) cardName.textContent = nameText;
+        }
+
         targetCard.classList.add('active');
+        
+        // 手機版：動態插入到名牌正下方
+        if (window.innerWidth <= 768) {
+            clickedBtn.parentNode.insertBefore(targetCard, clickedBtn.nextSibling);
+            clickedBtn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 }

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>穌一下．JeSoothe</title>
-    <link rel="icon" type="image/png" href="images/JeSoothe/260520/Logos/3.png">
-    <link rel="stylesheet" href="css/JeSoothe.css?v=260427">
+    <link rel="icon" type="image/png" href="images/JeSoothe/Logos/3.png">
+    <link rel="stylesheet" href="css/JeSoothe.css?v=260521">
 </head>
 
 <body>
@@ -25,21 +25,21 @@
 
         <nav class="hotbar">
             <a href="#home" onclick="switchBlock(event, 'block-home', this)" class="hotbar-slot" data-tooltip="回到首頁">
-                <img src="images/JeSoothe/home.png" alt="Home" class="slot-icon">
+                <img src="images/JeSoothe/Hotbar/home.png" alt="Home" class="slot-icon">
             </a>
             <a href="#about" onclick="switchBlock(event, 'block-about', this)" class="hotbar-slot" data-tooltip="關於我們">
-                <img src="images/JeSoothe/about.png" alt="about" class="slot-icon">
+                <img src="images/JeSoothe/Hotbar/about.png" alt="about" class="slot-icon">
             </a>
             <a href="#service" onclick="switchBlock(event, 'block-service', this)" class="hotbar-slot"
                 data-tooltip="服務項目">
-                <img src="images/JeSoothe/service.png" alt="Service" class="slot-icon">
+                <img src="images/JeSoothe/Hotbar/service.png" alt="Service" class="slot-icon">
             </a>
             <a href="#members" onclick="switchBlock(event, 'block-members', this)" class="hotbar-slot"
                 data-tooltip="店員介紹">
-                <img src="images/JeSoothe/members.png" alt="Members" class="slot-icon">
+                <img src="images/JeSoothe/Hotbar/members.png" alt="Members" class="slot-icon">
             </a>
             <a href="index.html" class="hotbar-slot" data-tooltip="返回教堂">
-                <img src="images/JeSoothe/exit.png" alt="Exit" class="slot-icon">
+                <img src="images/JeSoothe/Hotbar/exit.png" alt="Exit" class="slot-icon">
             </a>
         </nav>
     </div>
@@ -48,14 +48,14 @@
         <picture>
             <source media="(max-width: 768px)" srcset="images/JeSoothe/耶穌張臂_直.jpg">
 
-            <img src="images/JeSoothe/260520/P2_Home_BG.png" alt="主視覺" class="fullscreen-bg">
+            <img src="images/JeSoothe/Background/P2_Home_BG.png" alt="主視覺" class="fullscreen-bg">
         </picture>
         <div class="content-wrapper"> </div>
     </section>
 
     <section id="block-about" class="other-block">
         <picture>
-            <img src="images/JeSoothe/260520/P1_About_BG.png" alt="主視覺" class="fullscreen-bg">
+            <img src="images/JeSoothe/Background/P1_About_BG.png" alt="主視覺" class="fullscreen-bg">
         </picture>
         <div class="content-wrapper">
             <h2>關於我們</h2>
@@ -65,7 +65,7 @@
 
     <section id="block-service" class="other-block">
         <picture>
-            <img src="images/JeSoothe/260520/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
+            <img src="images/JeSoothe/Background/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
         </picture>
         <div class="content-wrapper">
             <h2>服務項目</h2>
@@ -171,37 +171,90 @@
 
     <section id="block-members" class="other-block">
         <picture>
-            <img src="images/JeSoothe/260520/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
+            <img src="images/JeSoothe/Background/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
         </picture>
         <div class="content-wrapper">
             <h2>店員介紹</h2>
 
             <div class="members-layout">
                 <div class="members-sidebar">
-                    <div class="member-avatar-btn active" onclick="showMember('member-1', this)">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID1">
+                    <div class="member-avatar-btn active" data-title="復活" data-name="耶穌"
+                        style="--bg-url: url('../images/JeSoothe/members/sidebar/耶穌_side.JPG');" onclick="showMember('member-1', this)">
+                        <img src="images/Photos/情人節/抖腳狂人鳥1.jpg" alt="耶穌頭像">
                     </div>
-                    <div class="member-avatar-btn" onclick="showMember('member-2', this)">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID2">
+                    <div class="member-avatar-btn" data-title="老大" data-name="草莓蘋果派"
+                        style="--bg-url: url('../images/JeSoothe/members/sidebar/草莓蘋果派_side.jpg');" onclick="showMember('member-2', this)">
+                        <img src="images/Photos/情人節/抖腳狂人鳥1.jpg" alt="ID2 頭像" class="avatar-icon">
                     </div>
-                    <div class="member-avatar-btn" onclick="showMember('member-3', this)">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID3">
+                    <div class="member-avatar-btn" data-title="善意" data-name="宮崎三高"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-3', this)">
                     </div>
-                    <div class="member-avatar-btn" onclick="showMember('member-4', this)">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID4">
+                    <div class="member-avatar-btn" data-title="芝麻湯圓" data-name="???"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-4', this)">
                     </div>
-                     <div class="member-avatar-btn" onclick="showMember('member-5', this)">
-                        <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID5">
-                    </div>                   
+                    <div class="member-avatar-btn" data-title="轟轟龍龍" data-name="曜恆"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-5', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="隨性" data-name="秋藍星夜"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-6', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="茶王" data-name="小茶茶"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-7', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="剛起鍋" data-name="陌上旌"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-8', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="鳥鳥" data-name="抖腳狂人鳥"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-9', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="貓" data-name="黑鷚鷚"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-10', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="夜兔" data-name="仙餅"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-11', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="吟遊詩人" data-name="?????"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-12', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="殘念系" data-name="???"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-13', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="極光" data-name="???"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-14', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="XX" data-name="XXX"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-15', this)">
+                    </div>
                 </div>
 
                 <div class="members-content">
-
                     <div id="member-1" class="member-detail-card active">
                         <div class="member-info">
                             <div class="name-group">
-                                <span class="member-title">老大</span>
-                                <h3 class="member-id">草莓蘋果派</h3>
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">復活系男子</span>
+                                <span class="tag">三天後見</span>
+                                <span class="tag">聖光</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「我不是回來了，是我根本沒走。阿門。」</p>
+                                <p>負責被拍照、被問問題、被要求把水變成酒，以及偶爾講一些聽不懂但結尾要說阿門的故事。</p>
+                                <p>備註：上班時間不定，遇到我就是當天的奇蹟<br>請勿餵食，我吃五餅二魚就行了。</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/耶穌.JPG" alt="ID1 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-2" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
                             </div>
                             <div class="member-tags">
                                 <span class="tag">斜咖</span>
@@ -214,67 +267,245 @@
                             </div>
                         </div>
                         <div class="member-portrait">
-                            <img src="images/JeSoothe/Boss.jpg" alt="ID1 立繪">
-                        </div>
-                    </div>
-
-                    <div id="member-2" class="member-detail-card">
-                        <div class="member-info">
-                            <div class="name-group">
-                                <span class="member-title">副店長</span>
-                                <h3 class="member-id">草莓蘋果派草</h3>
-                            </div>
-                            <div class="member-tags">
-                                <span class="tag">職階：副店長</span>
-                                <span class="tag">專長：塔羅占卜</span>
-                            </div>
-                            <div class="member-desc">
-                                <p>「命運的輪盤已經開始轉動...」</p>
-                                <p>第二位店員的專屬介紹。</p>
-                            </div>
-                        </div>
-                        <div class="member-portrait">
-                            <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID2 立繪">
+                            <img src="images/JeSoothe/members/草莓蘋果派.jpg" alt="ID2 立繪">
                         </div>
                     </div>
 
                     <div id="member-3" class="member-detail-card">
                         <div class="member-info">
                             <div class="name-group">
-                                <span class="member-title">副店長</span>
-                                <h3 class="member-id">ID3</h3>
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
                             </div>
                             <div class="member-tags">
-                                <span class="tag">職階：副店長</span>
-                                <span class="tag">專長：塔羅占卜</span>
+                                <span class="tag">輕鬆</span>
+                                <span class="tag">自娛自樂</span>
+                                <span class="tag">攝影師</span>
                             </div>
                             <div class="member-desc">
-                                <p>「命運的輪盤已經開始轉動...」</p>
-                                <p>第二位店員的專屬介紹。</p>
+                                <p>「一起成為充滿善意的人好嗎？好。」</p>
                             </div>
                         </div>
                         <div class="member-portrait">
-                            <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID3 立繪">
+                            <img src="images/JeSoothe/members/宮崎三高.JPG" alt="ID3 立繪">
                         </div>
                     </div>
 
                     <div id="member-4" class="member-detail-card">
                         <div class="member-info">
                             <div class="name-group">
-                                <span class="member-title">副店長</span>
-                                <h3 class="member-id">ID4</h3>
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
                             </div>
                             <div class="member-tags">
-                                <span class="tag">職階：副店長</span>
-                                <span class="tag">專長：塔羅占卜</span>
+                                <span class="tag">芝麻湯圓</span>
+                                <span class="tag">隨和</span>
+                                <span class="tag">傾聽</span>
                             </div>
                             <div class="member-desc">
-                                <p>「命運的輪盤已經開始轉動...」</p>
-                                <p>第二位店員的專屬介紹。</p>
+                                <p>「別動讓我好好看看你，你真可愛。」</p>
                             </div>
                         </div>
                         <div class="member-portrait">
-                            <img src="images/情人節/抖腳狂人鳥1.jpg" alt="ID4 立繪">
+                            <img src="images/JeSoothe/members/兔_.JPG" alt="ID4 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-5" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">失控</span>
+                                <span class="tag">肚子餓</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「哈哈哈哈好餓哦，可以吃客人嗎？我要吃！我要吃！」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/曜恆.JPG" alt="ID5 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-6" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">愛聊天</span>
+                                <span class="tag">喜愛熱鬧</span>
+                                <span class="tag">薛丁格的E</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「是個隨心所欲的兔，靜待你來點擊查看——今天你想聊到幾點？」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/秋藍星夜.JPG" alt="ID6 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-7" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">不是綠茶</span>
+                                <span class="tag">愛自由</span>
+                                <span class="tag">誇誇全肯定bot</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「如人飲茶，冷暖自知——今天想喝什麼口味的茶？」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/小茶茶.JPG" alt="ID7 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-8" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">potato</span>
+                                <span class="tag">馬鈴薯</span>
+                                <span class="tag">じゃがいも</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「剛起鍋的薯條最好吃...怎麼？不想嚐一口看看嗎？」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/陌上旌.JPG" alt="ID8 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-9" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">種田</span>
+                                <span class="tag">不睡覺</span>
+                                <span class="tag">友好部族</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「再三十秒耐色瑞爾毀滅法球就要爆炸了！」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/抖腳狂人鳥.JPG" alt="ID9 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-10" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">陪伴貓</span>
+                                <span class="tag">愛玩</span>
+                                <span class="tag">怕生</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「要去哪裡玩？帶上我！」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/黑鷚鷚.JPG" alt="ID10 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-11" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">冷淡</span>
+                                <span class="tag">溫柔</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「我不是很會安慰人，可如果是你，我願意聽。」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/仙餅.JPG" alt="ID11 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-12" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">傾聽</span>
+                                <span class="tag">音樂人</span>
+                                <span class="tag">自我認同貓女</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「流浪音樂教師，喜歡的音樂遍布各種風格，用樂曲賞析帶你進入更深層的音樂世界。」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/音樂肥_.JPG" alt="ID12 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-13" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">可摸摸</span>
+                                <span class="tag">開口破功</span>
+                                <span class="tag">愛鯰魚</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「吃魚的時候我只吃魚頭跟魚尾，因為我要把餘生都留給你。」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/龍_.JPG" alt="ID13 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-14" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">反差</span>
+                                <span class="tag">靈魂</span>
+                                <span class="tag">柏拉圖</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「或許比任何人都害怕孤獨，想試著成為別人的光。」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/極光.JPG" alt="ID14 立繪">
                         </div>
                     </div>
 
