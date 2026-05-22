@@ -67,108 +67,69 @@
         <picture>
             <img src="images/JeSoothe/Background/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
         </picture>
+
         <div class="content-wrapper">
             <h2>服務項目</h2>
-
-            <!-- 卡片式分類導覽列 -->
-            <div class="service-tabs-container">
-                <button class="scroll-arrow left" onclick="scrollTabs(-1)">〈</button>
-
-                <div class="service-tabs-viewport" id="tabs-viewport">
-                    <div class="category-card active" onclick="showCategory('menu')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/湯匙貓.JPG" alt=""></div>
-                        <span>精緻菜單</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('designate')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/主墨鏡.png" alt=""></div>
-                        <span>店員指名</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('others')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/十字架鼠.JPG" alt=""></div>
-                        <span>CASINO</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('others')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/宿醉貓.JPG" alt=""></div>
-                        <span>慶生派對</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('others')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/十字架鼠.JPG" alt=""></div>
-                        <span>教會地下博奕場</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('others')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/十字架鼠.JPG" alt=""></div>
-                        <span>教會地下博奕場</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('others')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/十字架鼠.JPG" alt=""></div>
-                        <span>教會地下博奕場</span>
-                    </div>
-                    <div class="category-card" onclick="showCategory('others')">
-                        <div class="circle-img"><img src="images/JeSoothe/service/demo/十字架鼠.JPG" alt=""></div>
-                        <span>教會地下博奕場</span>
-                    </div>
-                </div>
-
-                <button class="scroll-arrow right" onclick="scrollTabs(1)">〉</button>
-            </div>
-
-            <!-- 捲軸內容區 -->
-            <div class="service-content-area">
-                <!-- 菜單 -->
-                <div id="cat-menu" class="service-cat-block active">
+            <div class="service-main-container">
+                <div class="service-menu-left">
                     <div class="service-item-row menu-style">
-                        <p class="cat-label">MENU / 精緻菜單</p>
-                        <div class="item-thumb square"><img src="images/JeSoothe/service/demo/burger.jpg"></div>
+                        <p class="cat-label">MENU / 店內價目表</p>
+                        <!-- <div class="item-thumb square"><img src="images/JeSoothe/service/demo/burger.jpg"></div> -->
                         <div class="service-info">
-                            <h3>手作起司牛肉漢堡排</h3>
-                            <p>手打漢堡排、生菜沙拉、火腿、炒蛋、香酥軟法。</p>
+                            <h3>指名費用</h3>
+                            <p>單節指名：150,000 Gil/每人。</p>
+                            <p>服務時間：每節30分鐘。</p>
                         </div>
                         <div class="service-price">50,000 Gil</div>
                     </div>
-                    <div class="service-item-row menu-style">
-                        <!-- <p class="cat-label"></p> -->
-                        <div class="item-thumb square"><img src="images/JeSoothe/service/demo/口水狗.JPG"></div>
-                        <div class="service-info">
-                            <h3>耶穌手作蛋包飯</h3>
-                            <p>聖歐姆蛋、Q彈米飯、番茄醬、耶穌的愛。</p>
-                        </div>
-                        <div class="service-price">100,000 Gil</div>
-                    </div>
                 </div>
 
-                <!-- 指名類別 -->
-                <div id="cat-designate" class="service-cat-block">
-                    <div class="service-item-row staff-style">
-                        <p class="cat-label">STAFF / 店員指名</p>
-                        <div class="item-thumb rectangle"><img src="images/JeSoothe/service/demo/察覺貓.JPG"></div>
-                        <div class="service-info">
-                            <h3>首席修女 ID1</h3>
-                            <p>提供專屬的心靈告解服務。</p>
+                <div class="service-sidebar-right">
+                    <div class="service-tabs-container">
+                        <button class="scroll-arrow left" onclick="scrollTabs(-1)">〈</button>
+                        <div class="service-tabs-viewport" id="tabs-viewport">
+                            <div class="category-card active" onclick="showCategory('ID1')">
+                                <div class="circle-img"><img src="images/JeSoothe/service/demo/湯匙貓.JPG" alt=""></div>
+                                <span>耶穌</span>
+                            </div>
+                            <div class="category-card" onclick="showCategory('ID2')">
+                                <div class="circle-img"><img src="images/JeSoothe/service/demo/主墨鏡.png" alt=""></div>
+                                <span>草莓蘋果派</span>
+                            </div>
                         </div>
-                        <div class="service-price">100,000 Gil</div>
+                        <button class="scroll-arrow right" onclick="scrollTabs(1)">〉</button>
                     </div>
-                </div>
 
-                <!-- 其他類別 -->
-                <div id="cat-others" class="service-cat-block">
-                    <div class="service-item-row other-style">
-                        <p class="cat-label">CASINO / 教會地下博奕場</p>
-                        <div class="item-hero"><img src="images/JeSoothe/service/demo/魔法貓.JPG"></div>
-                        <div class="info-body">
-                            <p>本場所受耶穌祝福</p>
-                            <p>純Gil賭局，健康又安全。</p>
-                            <ul class="feature-list">
-                                <li>✦ 二十一點專業牌桌</li>
-                                <li>✦ 幸運輪盤挑戰</li>
-                            </ul>
+                    <div class="service-content-area">
+                        <div id="cat-ID1" class="service-cat-block active">
+                            <div class="service-item-row staff-style">
+                                <p class="cat-label">STAFF / 個人服務</p>
+                                <div class="service-info">
+                                    <h3 class="service-title">耶穌</h3>
+                                    <p>✦ 個人服務項目1</p>
+                                    <p>✦ 個人服務項目2</p>
+                                </div>
+                                <div class="service-price">50,000 Gil</div>
+                            </div>
                         </div>
-                        <div class="service-price">FREE ENTRANCE</div>
+
+                        <div id="cat-ID2" class="service-cat-block">
+                            <div class="service-item-row staff-style">
+                                <p class="cat-label">STAFF / 個人服務</p>
+                                <div class="service-info">
+                                    <h3 class="service-title">草莓蘋果派</h3>
+                                    <p>✦ 個人服務項目1</p>
+                                    <p>✦ 個人服務項目2</p>
+                                </div>
+                                <div class="service-price">100,000 Gil</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="block-members" class="other-block">
         <picture>
             <img src="images/JeSoothe/Background/P3_Others_BG.png" alt="主視覺" class="fullscreen-bg">
@@ -179,51 +140,70 @@
             <div class="members-layout">
                 <div class="members-sidebar">
                     <div class="member-avatar-btn active" data-title="復活" data-name="耶穌"
-                        style="--bg-url: url('../images/JeSoothe/members/sidebar/耶穌_side.JPG');" onclick="showMember('member-1', this)">
+                        style="--bg-url: url('../images/JeSoothe/members/sidebar/耶穌_side.JPG');"
+                        onclick="showMember('member-1', this)">
                         <img src="images/Photos/情人節/抖腳狂人鳥1.jpg" alt="耶穌頭像">
                     </div>
                     <div class="member-avatar-btn" data-title="老大" data-name="草莓蘋果派"
-                        style="--bg-url: url('../images/JeSoothe/members/sidebar/草莓蘋果派_side.jpg');" onclick="showMember('member-2', this)">
+                        style="--bg-url: url('../images/JeSoothe/members/sidebar/草莓蘋果派_side.jpg');"
+                        onclick="showMember('member-2', this)">
                         <img src="images/Photos/情人節/抖腳狂人鳥1.jpg" alt="ID2 頭像" class="avatar-icon">
                     </div>
                     <div class="member-avatar-btn" data-title="善意" data-name="宮崎三高"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-3', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-3', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="芝麻湯圓" data-name="???"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-4', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-4', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="轟轟龍龍" data-name="曜恆"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-5', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-5', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="隨性" data-name="秋藍星夜"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-6', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-6', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="茶王" data-name="小茶茶"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-7', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-7', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="剛起鍋" data-name="陌上旌"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-8', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-8', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="鳥鳥" data-name="抖腳狂人鳥"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-9', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-9', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="貓" data-name="黑鷚鷚"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-10', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-10', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="夜兔" data-name="仙餅"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-11', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-11', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="吟遊詩人" data-name="?????"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-12', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-12', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="殘念系" data-name="???"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-13', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-13', this)">
                     </div>
                     <div class="member-avatar-btn" data-title="極光" data-name="???"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-14', this)">
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-14', this)">
                     </div>
-                    <div class="member-avatar-btn" data-title="XX" data-name="XXX"
-                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');" onclick="showMember('member-15', this)">
+                    <div class="member-avatar-btn" data-title="博愛" data-name="???"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-15', this)">
+                    </div>
+                    <div class="member-avatar-btn" data-title="危" data-name="?????"
+                        style="--bg-url: url('../images/Photos/情人節/抖腳狂人鳥1.jpg');"
+                        onclick="showMember('member-16', this)">
                     </div>
                 </div>
 
@@ -506,6 +486,47 @@
                         </div>
                         <div class="member-portrait">
                             <img src="images/JeSoothe/members/極光.JPG" alt="ID14 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-15" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">慢熱</span>
+                                <span class="tag">電波系</span>
+                                <span class="tag">跌坑</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>談話的熱度決定發病的程度。</p>
+                                <p>「我將給予平等的愛。」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/博愛.JPG" alt="ID15 立繪">
+                        </div>
+                    </div>
+
+                    <div id="member-16" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">直率</span>
+                                <span class="tag">惡趣味</span>
+                                <span class="tag">出奇不意</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「你確定要找我聊天？你真是......勇敢。(微妙的笑)」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/危.JPG" alt="ID16 立繪">
                         </div>
                     </div>
 

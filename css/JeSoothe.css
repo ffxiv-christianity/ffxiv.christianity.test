@@ -162,10 +162,10 @@ body::before {
 }
 
 /* =========================================
-   2. 主頁面 (Home)
+   2. Backgroungd
    ========================================= */
 .fullscreen-bg {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -176,8 +176,9 @@ body::before {
 }
 
 /* =========================================
-   3. 服務項目 (#service) 
+   3. 服務項目 (service)
    ========================================= */
+
 #block-service {
     align-items: flex-start;
     padding-top: clamp(10px, 2vh, 20px);
@@ -185,164 +186,194 @@ body::before {
     overflow-y: auto;
 }
 
-#block-service .content-wrapper {
-    max-width: 100%;
-    width: 100%;
-    padding: 0 4vw;
-    box-sizing: border-box;
-}
-
 #block-service h2 {
     margin-top: 0;
-    margin-bottom: 3.5vh;
+    margin-bottom: 25px;
     text-align: center;
 }
 
-/* --- 1. 導覽標籤與滑動列 --- */
+#block-service .content-wrapper {
+    transform: scale(1);
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+    width: 1700px;
+    max-width: 95vw;
+    margin: 0 auto;
+    height: clamp(600px, 85vh, 900px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   分欄框架 ( Grid 1:1 & 統一背景 )
+   ========================================= */
+.service-main-container {
+display: grid;
+    grid-template-columns: 1fr 1fr; /* 左右 1:1 */
+    gap: 40px;
+    
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    max-height: 75vh;
+}
+
+/* =========================================
+   左側：固定靜態長菜單 ( Menu )
+   ========================================= */
+.service-menu-left {
+    height: 100%; 
+    overflow-y: auto; 
+    
+    /* 給左側一個俐落的菜單底板 */
+    background: rgba(15, 10, 18, 0.75); /* 比右邊深一點、乾淨一點 */
+    border: 1px solid rgba(252, 227, 161, 0.15);
+    border-radius: 8px;
+    padding: 30px; /* 加上內距，文字才不會貼邊 */
+    
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+.service-menu-left::-webkit-scrollbar { width: 6px; }
+.service-menu-left::-webkit-scrollbar-thumb { 
+    background: rgba(252, 227, 161, 0.3); 
+    border-radius: 10px; 
+}
+
+/* 捲軸美化 */
+.service-menu-left::-webkit-scrollbar { width: 6px; }
+.service-menu-left::-webkit-scrollbar-thumb { 
+    background: rgba(252, 227, 161, 0.3); 
+    border-radius: 10px; 
+}
+
+/* =========================================
+   右側：互動指名專區
+   ========================================= */
+.service-sidebar-right {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    overflow: hidden; 
+
+/* 🌟 將 Members 的背景套用到右側整個大框框上 */
+    background: rgba(10, 5, 12, 0.4); 
+    border: 1px solid rgba(252, 227, 161, 0.15);
+    border-radius: 8px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 30px; /* 加上內距 */
+}
+
+/* 導覽列容器 (橫滑列) */
 .service-tabs-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto 50px auto;
-    padding: 0 20px;
-    box-sizing: border-box;
+    margin: 0 0 20px 0; 
+    padding: 0;
 }
 
-.service-tabs-viewport::after,
-.service-tabs-viewport::before {
-    content: '';
-    margin: auto;
-}
-
+/* 確保按鈕區塊能流暢滑動 */
 .service-tabs-viewport {
     display: flex;
-    gap: 40px;
-    padding: 10px 0;
-    /* flex-grow: 1; */
-    justify-content: flex-start;
+    gap: 15px; 
     overflow-x: auto;
     scroll-behavior: smooth;
-    scrollbar-width: none;
+    scrollbar-width: none; 
 }
-
-/* 隱藏捲軸(Chrome) */
-.service-tabs-viewport::-webkit-scrollbar {
-    display: none;
-}
+.service-tabs-viewport::-webkit-scrollbar { display: none; }
 
 /* 圓形照片卡片按鈕 */
 .category-card {
     flex: 0 0 100px; 
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    text-align: center; 
+    align-items: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     opacity: 0.6;
-    position: relative;
 }
+.category-card.active { opacity: 1; transform: scale(1.05); }
+.category-card:hover { opacity: 1; transform: translateY(-3px); }
 
-.category-card span {
-    color: #fce3a1;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    white-space: nowrap; 
-    display: block;
-    width: 100%;
-}
-
-.category-card:hover {
-    opacity: 1;
-    filter: grayscale(0);
-    transform: translateY(-5px);
-}
-
-.category-card:hover .circle-img {
-    border-color: #fce3a1;
-    box-shadow: 0 0 20px rgba(252, 227, 161, 0.6);
-    background: rgba(252, 227, 161, 0.1);
-}
-
-.category-card.active {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
+/* 圓形圖片框設定 */
 .circle-img {
-    width: 80px;
+    width: 80px; 
     height: 80px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(252, 227, 161, 0.3);
-    margin-bottom: 10px;
     overflow: hidden;
+    margin-bottom: 8px;
 }
+.circle-img img { width: 100%; height: 100%; object-fit: cover; }
+.category-card.active .circle-img { border-color: #fce3a1; box-shadow: 0 0 15px rgba(252, 227, 161, 0.4); }
 
-.circle-img img {
-    width: 100%;      
-    height: 100%;     
-    object-fit: cover;
-    display: block;
-}
-
-.category-card.active .circle-img {
-    border-color: #fce3a1;
-    box-shadow: 0 0 15px rgba(252, 227, 161, 0.4);
-}
+/* 按鈕文字設定 */
+.category-card span { color: #fce3a1; font-size: 0.9rem; white-space: nowrap; }
 
 /* 左右箭頭 */
-.scroll-arrow {
-    flex-shrink: 0;
-    background: none;
-    border: none;
-    color: #fce3a1;
-    font-size: 1.8rem;
-    cursor: pointer;
-    z-index: 10;
-    padding: 10px 20px;
-    transition: all 0.3s ease;
-    opacity: 0.7;
-}
+.scroll-arrow { background: none; border: none; color: #fce3a1; font-size: 1.6rem; cursor: pointer; transition: 0.3s; padding: 10px; }
+.scroll-arrow:hover { opacity: 1; text-shadow: 0 0 10px rgba(252, 227, 161, 0.8); }
 
-.scroll-arrow:hover {
-    opacity: 1;
-    text-shadow: 0 0 10px rgba(252, 227, 161, 0.8);
-    transform: scale(1.2);
-}
-
-/* --- 2. 捲軸內容區 (靠左設定) --- */
+/* 右側內容區塊 */
 .service-content-area {
-    width: 100%;
-}
-
-/* --- 圖片區塊樣式 --- */
-.item-thumb {
-    flex-shrink: 0;
-    margin-right: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #111;
-    border-radius: 8px;
+flex-grow: 1;
+    overflow-y: auto; 
+    padding-right: 10px;
     
+    /* 🌟 因為外層已經有背景了，這裡設為透明 */
+    background: transparent; 
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+.service-content-area::-webkit-scrollbar { width: 4px; }
+.service-content-area::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
+
+/* =========================================
+   UI 風格：通用項目樣式
+   ========================================= */
+
+.service-item-row {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #fce3a1;
+    padding: 18px 25px; 
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    transition: 0.3s;
+    min-height: 120px; 
+}
+.service-item-row:hover { background: rgba(255, 255, 255, 0.07); }
+
+/* 標題與遊戲化 UI (妳新加的 h3 樣式) */
+.service-title {
+    display: inline-block;
+    padding: 8px 18px;
+    background: rgba(20, 15, 25, 0.8);
+    border: 1px solid rgba(252, 227, 161, 0.4);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    color: #fce3a1;
+    border-radius: 4px;
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
 }
 
 /* 菜單用：正方形 */
 .item-thumb.square {
-    width: 120px;
-    height: 120px;
-    
+    width: 100px; 
+    height: 100px;
     flex-shrink: 0;
     margin-right: 25px; 
     border: 1px solid rgba(255, 255, 255, 0.15);
     background: #000;
     border-radius: 12px;
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,8 +382,8 @@ body::before {
 
 /* 指名用：長方形 (直式) */
 .item-thumb.rectangle {
-    width: 120px;
-    height: 160px;
+    width: 100px;
+    height: 130px;
     flex-shrink: 0;
     margin-right: 25px;
     border-radius: 8px;
@@ -364,6 +395,7 @@ body::before {
     object-fit: cover;
 }
 
+/* 切換類別用 */
 .service-cat-block {
     display: none;
     flex-direction: column;
@@ -375,22 +407,6 @@ body::before {
     display: flex;
 }
 
-.service-item-row {
-    position: relative;
-    margin-top: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 3px solid #fce3a1;
-    padding: 15px 25px; 
-    display: flex;
-    align-items: center; 
-    transition: all 0.3s ease;
-    min-height: 140px;
-}
-
-.service-item-row:hover {
-    background: rgba(255, 255, 255, 0.07);
-}
-
 .service-info {
     flex-grow: 1;
     text-align: left;
@@ -399,8 +415,9 @@ body::before {
     justify-content: center;
 }
 
- .service-info h3 {
+.service-info h3 {
     color: #fce4a1dd;
+    margin: 0 0 8px 0;
 } 
 
 .service-price {
@@ -410,84 +427,14 @@ body::before {
     font-size: 1.1rem;
     margin-left: auto; 
     padding-left: 20px;
-    margin-top: 0; 
     display: flex;
     align-items: center;
-}
-
-/* other-style */
-.service-item-row.other-style {
-    display: flex;
-    flex-direction: row; 
-    gap: 40px;          
-    padding: 40px;      
-    align-items: flex-start; 
-    min-height: 500px;
-}
-
-.other-style .item-hero {
-    flex: 0 0 50%;      
-    height: 450px;      
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(252, 227, 161, 0.3);
-}
-
-.other-style .item-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.other-style .info-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: left;    
-    align-items: flex-start;
-}
-
-.other-style .info-body p {
-    margin: 0 0 10px 0;
-    line-height: 1.4; 
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-.other-style .info-body p:last-of-type {
-    margin-bottom: 25px; 
-}
-
-/* 額外增加的小清單特效 */
-.other-style .feature-list {
-    list-style: none;
-    padding: 0;
-    display: flex;       
-    flex-direction: column; 
-    gap: 15px;           
-}
-
-.other-style .feature-list li {
-    font-size: 1rem;
-    color: #fce3a1;
-    opacity: 0.9;
-    padding-left: 5px;
-    border-left: 2px solid rgba(252, 227, 161, 0.3);
-    padding: 5px 15px;
-}
-
-.other-style .service-price {
-    margin-left: auto;
-    align-self: center;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
 }
 
 /* 漂浮label */
 .cat-label {
     position: absolute;
-    top: -35px;         
+    top: -20px;        
     left: 10px;  
     background: #fce4a1 !important;
     color: #1a052f !important;
@@ -513,9 +460,14 @@ body::before {
 }
 
 #block-members .content-wrapper {
-    max-width: 1700px; 
-    width: 95vw;       
-    height: 85vh;
+    transform: scale(1);
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+    width: 1700px;
+    /* height: 900px; */
+    max-width: 95vw;
+    margin: 0 auto;
+    height: clamp(600px, 85vh, 900px);
     display: flex;
     flex-direction: column;
 }
@@ -527,13 +479,13 @@ body::before {
 
 .members-layout {
     display: flex;
-    gap: 50px;
-    flex: 1; 
-    min-height: 0; 
+    gap: clamp(20px, 4vw, 50px);
+    flex: 1;
+    min-height: 0;
 }
 
 .members-sidebar {
-    flex: 0 0 35%; 
+    flex: 0 0 35%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
@@ -542,27 +494,33 @@ body::before {
     padding: 10px 15px 10px 0;
 }
 
-.members-sidebar::-webkit-scrollbar { width: 6px; }
-.members-sidebar::-webkit-scrollbar-thumb { background: rgba(140, 115, 85, 0.5); border-radius: 10px; }
+.members-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.members-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(140, 115, 85, 0.5);
+    border-radius: 10px;
+}
 
 /* 圓形頭像按鈕 */
 .member-avatar-btn {
     width: 100%;
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1;
     height: auto;
-    border-radius: 4px; 
-    border: 1px solid rgba(252, 227, 161, 0.2); 
+    border-radius: 4px;
+    border: 1px solid rgba(252, 227, 161, 0.2);
     background: rgba(10, 5, 12, 0.6);
     overflow: hidden;
     cursor: pointer;
     position: relative;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    opacity: 0.5; 
+    opacity: 0.5;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
 }
 
 .member-avatar-btn::before {
-        display: none;
+    display: none;
 }
 
 .member-avatar-btn::after {
@@ -582,14 +540,14 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(30%) brightness(0.8); 
+    filter: grayscale(30%) brightness(0.8);
     transition: all 0.3s ease;
 }
 
 .member-avatar-btn:hover {
     opacity: 0.85;
     border-color: rgba(252, 227, 161, 0.6);
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.9);
 }
 
@@ -599,7 +557,7 @@ body::before {
 
 .member-avatar-btn.active {
     opacity: 1;
-    border-color: #fce3a1; 
+    border-color: #fce3a1;
     transform: scale(1.02) translateY(-2px);
     box-shadow: 0 0 15px rgba(252, 227, 161, 0.3), 5px 5px 0px rgba(10, 5, 15, 0.9);
 }
@@ -614,12 +572,12 @@ body::before {
 
 /* --- 右側：詳細內容大框 --- */
 .members-content {
-flex: 1; 
-    background: rgba(10, 5, 12, 0.4); 
-    backdrop-filter: none; 
+    flex: 1;
+    background: rgba(10, 5, 12, 0.4);
+    backdrop-filter: none;
     border: 1px solid rgba(252, 227, 161, 0.15);
-    border-radius: 4px; 
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); 
+    border-radius: 4px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     position: relative;
     max-height: 80vh;
@@ -629,15 +587,15 @@ flex: 1;
     display: none;
     width: 100%;
     height: 100%;
-    padding: 40px 50px;
+    padding: clamp(24px, 3vh, 40px) clamp(20px, 4vw, 50px);
     box-sizing: border-box;
     animation: fadeIn 0.5s ease;
 }
 
 .member-detail-card.active {
-display: flex;
+    display: flex;
     flex-direction: row;
-    gap: 60px; 
+    gap: clamp(20px, 4vw, 60px);
     height: 100%;
     max-height: 100%;
 }
@@ -648,8 +606,8 @@ display: flex;
     flex-direction: column;
     overflow-y: auto;
     text-align: left;
-    overflow-y: auto; 
-    padding-right: 15px; 
+    overflow-y: auto;
+    padding-right: 15px;
     padding-bottom: 20px;
 }
 
@@ -664,7 +622,7 @@ display: flex;
 .member-title {
     display: block;
     color: #d4c5b0;
-    font-size: 1.1rem;
+    font-size: clamp(0.85rem, 0.8vw + 0.5rem, 1.3rem);
     letter-spacing: 3px;
     margin-bottom: 8px;
     font-family: "Noto Sans TC", sans-serif;
@@ -672,11 +630,11 @@ display: flex;
 
 .member-id {
     color: #fce3a1;
-    font-size: clamp(1.5rem, 12cqi, 3rem); 
+    font-size: clamp(1.2rem, 2.5vw, 3rem);
     margin: 0;
     font-family: "Georgia", "Times New Roman", serif;
     letter-spacing: 2px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     line-height: 1.2;
     word-break: keep-all;
 }
@@ -685,44 +643,47 @@ display: flex;
 .member-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 30px;
+    gap: clamp(8px, 1vw, 15px);
+    margin-bottom: clamp(20px, 3vh, 30px);
 }
 
 .member-tags .tag {
-    background: linear-gradient(135deg, rgba(252,227,161,0.15), rgba(252,227,161,0.05));
+    background: linear-gradient(135deg, rgba(252, 227, 161, 0.15), rgba(252, 227, 161, 0.05));
     border: 1px solid rgba(252, 227, 161, 0.3);
     color: #fce3a1;
-    padding: 6px 16px;
+    padding: clamp(4px, 0.5vw, 10px) clamp(12px, 1.5vw, 24px);
+    font-size: clamp(0.75rem, 0.5vw + 0.5rem, 1.1rem);
     border-radius: 30px;
-    font-size: 0.9rem;
     letter-spacing: 1px;
 }
 
 .member-desc {
     text-align: left;
 }
+
 .member-desc p {
     color: #e6d5e8;
     line-height: 1.9;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
     margin-bottom: 20px;
     text-align: left;
 }
 
 /* 右側直式立繪區 */
 .member-portrait {
-    flex: 0 0 35%; 
-    max-width: 200px; 
-    max-height: 75vh; 
-    align-self: stretch; 
-    display: flex; 
+    flex: 0 0 auto;
+    /* max-width: 200px;  */
+    /* max-width: clamp(200px, 35%, 300px);
+    max-height: 75vh;  */
+    /* aspect-ratio: 1 / 2; */
+    align-self: stretch;
+    display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 0; 
-    border: 2px solid rgba(252, 227, 161, 0.7); 
-    box-shadow: 8px 8px 0px rgba(10, 5, 15, 0.9); 
+    border-radius: 0;
+    border: 2px solid rgba(252, 227, 161, 0.7);
+    box-shadow: 8px 8px 0px rgba(10, 5, 15, 0.9);
     overflow: hidden;
     position: relative;
     background: #000;
@@ -736,13 +697,14 @@ display: flex;
     right: 6px;
     bottom: 6px;
     border: 1px solid rgba(252, 227, 161, 0.4);
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .member-portrait img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: top center;
 }
 
 /* =========================================
@@ -750,7 +712,7 @@ display: flex;
    ========================================= */
 
 .member-info::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
 }
 
 .member-info::-webkit-scrollbar-track {
@@ -759,14 +721,14 @@ display: flex;
 }
 
 .member-info::-webkit-scrollbar-thumb {
-    background: rgba(252, 227, 161, 0.3); 
+    background: rgba(252, 227, 161, 0.3);
     border-radius: 10px;
     border: 1px solid rgba(20, 15, 25, 0.5);
     transition: background 0.3s ease;
 }
 
 .member-info::-webkit-scrollbar-thumb:hover {
-    background: rgba(252, 227, 161, 0.6); 
+    background: rgba(252, 227, 161, 0.6);
 }
 
 /* =========================================
@@ -776,12 +738,11 @@ display: flex;
 @keyframes hotbarEntrance {
     0% {
         opacity: 0;
-        bottom: -50px;
+        transform: translateX(-50%) translateY(75px); 
     }
-
     100% {
         opacity: 1;
-        bottom: 25px;
+        transform: translateX(-50%) translateY(0);
     }
 }
 
@@ -923,10 +884,10 @@ display: flex;
 .hotbar-slot::after {
     content: attr(data-tooltip);
     position: absolute;
-    top: 120%;        
+    top: 120%;
     left: 50%;
     transform: translateX(-50%);
-    
+
     background: rgba(15, 15, 15, 0.9);
     color: #e0d5c1;
     padding: 4px 10px;
@@ -943,7 +904,7 @@ display: flex;
 
 .hotbar-slot:hover::after {
     opacity: 1;
-    top: 110%;           
+    top: 110%;
 }
 
 /* =========================================
@@ -952,6 +913,15 @@ display: flex;
 
 /* 手機版 (768px 以下) */
 @media (max-width: 768px) {
+    .music-player {
+        width: 38px;
+        height: 38px;
+    }
+
+    .music-fab {
+        font-size: 1.1rem;
+    }
+
     .hotbar-slot::after {
         display: none !important;
     }
@@ -970,18 +940,18 @@ display: flex;
     }
 
 
-/* =========================================
+    /* =========================================
    店員介紹 (#members)
 ========================================= */
-#block-members .content-wrapper {
+    #block-members .content-wrapper {
         max-width: 100vw;
         padding: 0 10px;
-        height: 82vh; 
+        height: 82vh;
     }
 
     .members-layout {
         flex-direction: column;
-        justify-content: flex-start; 
+        justify-content: flex-start;
         align-items: flex-start;
         gap: 12px;
         overflow-y: auto;
@@ -989,9 +959,15 @@ display: flex;
         height: 100%;
         padding-right: 8px;
     }
-    
-    .members-layout::-webkit-scrollbar { width: 4px; }
-    .members-layout::-webkit-scrollbar-thumb { background: rgba(252, 227, 161, 0.3); border-radius: 4px; }
+
+    .members-layout::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .members-layout::-webkit-scrollbar-thumb {
+        background: rgba(252, 227, 161, 0.3);
+        border-radius: 4px;
+    }
 
     .members-content {
         display: contents;
@@ -1007,30 +983,30 @@ display: flex;
 
     .member-avatar-btn {
         width: 100%;
-        height: 65px; 
+        height: 65px;
         aspect-ratio: auto;
         border-radius: 4px;
-        
-        opacity: 0.45; 
-        border: 1px solid rgba(252, 227, 161, 0.05); 
+
+        opacity: 0.45;
+        border: 1px solid rgba(252, 227, 161, 0.05);
         box-shadow: none;
-        background-color: #0f0a14; 
-        
-        background-image: 
-            linear-gradient(to right, #0f0a14 25%, rgba(15, 10, 20, 0.7) 55%, transparent 100%), 
+        background-color: #0f0a14;
+
+        background-image:
+            linear-gradient(to right, #0f0a14 25%, rgba(15, 10, 20, 0.7) 55%, transparent 100%),
             var(--bg-url);
-            
-        background-position: 0% 50%, 100% 45%; 
+
+        background-position: 0% 50%, 100% 45%;
         background-size: cover, 50% auto;
         background-repeat: no-repeat;
-        
+
         display: flex;
         align-items: center;
         padding: 0 20px;
         box-sizing: border-box;
         cursor: pointer;
         position: relative;
-        transition: all 0.3s ease; 
+        transition: all 0.3s ease;
     }
 
     .member-avatar-btn::before {
@@ -1041,32 +1017,37 @@ display: flex;
         font-weight: bold;
         font-size: 1.05rem;
         letter-spacing: 2px;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
         transition: all 0.3s ease;
     }
-    
-    .member-avatar-btn::after { display: none !important; }
-    .member-avatar-btn img { display: none !important; } 
+
+    .member-avatar-btn::after {
+        display: none !important;
+    }
+
+    .member-avatar-btn img {
+        display: none !important;
+    }
 
     .member-avatar-btn:hover,
     .member-avatar-btn.active {
-        opacity: 1; 
-        border: 1px solid rgba(252, 227, 161, 0.7); 
+        opacity: 1;
+        border: 1px solid rgba(252, 227, 161, 0.7);
         box-shadow: none;
     }
-    
+
     .member-avatar-btn.active::before {
-        color: #fce3a1; 
+        color: #fce3a1;
     }
 
     .member-detail-card {
-        display: none; 
+        display: none;
         width: 100%;
-        
-        height: auto !important; 
-        min-height: auto !important; 
-        max-height: none !important; 
-        
+
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+
         padding: 20px 15px;
         background: rgba(10, 5, 12, 0.5);
         border: 1px solid rgba(252, 227, 161, 0.15);
@@ -1088,9 +1069,9 @@ display: flex;
         max-height: 300px;
         padding-right: 8px;
     }
-    
-    .member-info .name-group { 
-        display: block; 
+
+    .member-info .name-group {
+        display: block;
         margin-bottom: 15px;
         border-bottom: 1px solid rgba(252, 227, 161, 0.2);
         padding-bottom: 10px;
@@ -1108,6 +1089,7 @@ display: flex;
         gap: 6px;
         margin-bottom: 12px;
     }
+
     .member-tags .tag {
         padding: 2px 8px;
         font-size: 0.75rem;
@@ -1126,34 +1108,69 @@ display: flex;
         align-self: stretch;
         /* max-width: 100px;
         max-height: 40vh;  */
-        
+
         border: 1px solid rgba(252, 227, 161, 0.5);
         box-shadow: 3px 3px 0px rgba(10, 5, 15, 0.9);
         background: rgba(10, 5, 12, 0.3);
-        
+
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
     }
-    
-    .member-portrait::after { display: none; }
+
+    .member-portrait::after {
+        display: none;
+    }
 
     .member-portrait img {
-        width: auto; 
+        width: auto;
         height: auto;
         max-width: 100%;
         max-height: 100%;
-        object-fit: contain; 
+        object-fit: contain;
         object-position: top center;
     }
 }
 
+/* 過渡斷點 */
+@media (max-width: 1200px) {
+    .hotbar-wrapper {
+        transform: translateX(-50%) scale(0.85);
+    }
+
+    /* =========================================
+   店員介紹 (#members)
+========================================= */
+    #block-members {
+        align-items: center;
+        padding-top: 0;
+    }
+
+    #block-members .content-wrapper {
+        transform: scale(0.85);
+    }
+
+}
 
 /* 2K 螢幕 (大於 1920px) */
 @media (min-width: 1921px) {
+    .music-player {
+        width: 75px;
+        /* 45px * 1.66 */
+        height: 75px;
+    }
+
+    .music-fab {
+        font-size: 1.85rem;
+    }
+
+    .music-fab:not(.playing)::after {
+        height: 3px;
+    }
+
     .hotbar-wrapper {
-        bottom: 40px;
+        transform: translateX(-50%) scale(1.2);
     }
 
     .hotbar-wrapper.hidden {
@@ -1182,12 +1199,39 @@ display: flex;
         width: 85%;
         height: 85%;
     }
+
+    /* =========================================
+   店員介紹 (#members)
+========================================= */
+    #block-members {
+        align-items: flex-start;
+    }
+
+    #block-members .content-wrapper {
+        transform: scale(1.33);
+        transform-origin: top center;
+    }
 }
 
 /* 4K 螢幕 (大於 2560px) */
-@media (min-width: 2561px) {
+@media (min-width: 2561px) and (min-height: 1600px) {
+    .music-player {
+        width: 105px;
+        /* 45px * 2.33 ≈ 105px */
+        height: 105px;
+    }
+
+    .music-fab {
+        font-size: 2.8rem;
+    }
+
+    .music-fab:not(.playing)::after {
+        height: 4px;
+        border-radius: 4px;
+    }
+
     .hotbar-wrapper {
-        bottom: 60px;
+        transform: translateX(-50%) scale(1.5);
     }
 
     .hotbar-wrapper.hidden {
@@ -1216,5 +1260,17 @@ display: flex;
     .slot-icon {
         width: 90%;
         height: 90%;
+    }
+
+    /* =========================================
+   店員介紹 (#members)
+========================================= */
+    #block-members {
+        align-items: flex-start;
+    }
+
+    #block-members .content-wrapper {
+        transform: scale(2);
+        transform-origin: top center;
     }
 }

@@ -101,7 +101,7 @@ function toggleMusic() {
     if (!bgm || !btn) return;
 
     if (bgm.paused) {
-        bgm.volume = 0.4;
+        bgm.volume = 0.2;
         bgm.play();
         btn.classList.add('playing');
     } else {
