@@ -110,34 +110,6 @@ function toggleMusic() {
     }
 }
 
-// =========================================
-// 服務項目 (#service) 
-// =========================================
-// A. 切換服務分類
-function showCategory(catId) {
-    // 1. 切換卡片高亮
-    const cards = document.querySelectorAll('.category-card');
-    cards.forEach(card => card.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-
-    // 2. 切換內容區
-    const blocks = document.querySelectorAll('.service-cat-block');
-    blocks.forEach(block => block.classList.remove('active'));
-
-    const target = document.getElementById('cat-' + catId);
-    if (target) target.classList.add('active');
-}
-
-// B. 控制標籤列左右滑動
-function scrollTabs(direction) {
-    const viewport = document.getElementById('tabs-viewport');
-    const scrollAmount = 300; // 每次滑動的距離
-    viewport.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-    });
-}
-
 window.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // 取得當前的 Hash，如果沒有則預設為 #home
@@ -176,6 +148,42 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// =========================================
+// 服務項目 (#service) 
+// =========================================
+
+// A. 切換服務分類 (維持妳原本完美的邏輯)
+function showCategory(catId) {
+    // 1. 切換卡片高亮
+    const cards = document.querySelectorAll('.category-card');
+    cards.forEach(card => card.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    // 2. 切換內容區
+    const blocks = document.querySelectorAll('.service-cat-block');
+    blocks.forEach(block => block.classList.remove('active'));
+
+    const target = document.getElementById('cat-' + catId);
+    if (target) target.classList.add('active');
+}
+
+function scrollTabs(direction) {
+    const viewport = document.getElementById('tabs-viewport');
+    const card = viewport.querySelector('.category-card');      // 取得第一個卡片元素，計算寬度
+    if (!card) return; 
+
+    const cardWidth = card.offsetWidth;
+    const gap = parseInt(window.getComputedStyle(viewport).gap) || 15;  //預設 15
+    const unitWidth = cardWidth + gap;
+    const itemsToScroll = 4;    // 設定一次要滑動幾個卡片距離
+    
+    const scrollAmount = unitWidth * itemsToScroll; 
+
+    viewport.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}
 
 // =========================================
 // 店員介紹 (#members) 
