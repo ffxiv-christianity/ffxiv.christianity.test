@@ -75,9 +75,9 @@ function playAndSync(bgm, btn) {
         if (btn) btn.classList.add('playing');
 
         // Fade-in
-        let targetVolume = 0.5;
+        let targetVolume = 0.15;
         let duration = 800;
-        let step = 0.05;
+        let step = 0.015;
         let interval = duration / (targetVolume / step);
 
         let fadeIn = setInterval(() => {
@@ -101,7 +101,7 @@ function toggleMusic() {
     if (!bgm || !btn) return;
 
     if (bgm.paused) {
-        bgm.volume = 0.2;
+        bgm.volume = 0.15;
         bgm.play();
         btn.classList.add('playing');
     } else {
@@ -175,7 +175,7 @@ function scrollTabs(direction) {
     const cardWidth = card.offsetWidth;
     const gap = parseInt(window.getComputedStyle(viewport).gap) || 15;  //預設 15
     const unitWidth = cardWidth + gap;
-    const itemsToScroll = 4;    // 設定一次要滑動幾個卡片距離
+    const itemsToScroll = 6;    // 設定一次要滑動幾個卡片距離
     
     const scrollAmount = unitWidth * itemsToScroll; 
 
