@@ -167,22 +167,53 @@ function showCategory(catId) {
     if (target) target.classList.add('active');
 }
 
+let isScrolling = false;
 function scrollTabs(direction) {
+    if (isScrolling) return;
+    let isMobile = window.innerWidth <= 768;
+    if (isMobile) return;
     const viewport = document.getElementById('tabs-viewport');
-    const card = viewport.querySelector('.category-card');      // 取得第一個卡片元素，計算寬度
+    const card = viewport.querySelector('.category-card');      
     if (!card) return; 
 
     const cardWidth = card.offsetWidth;
-    const gap = parseInt(window.getComputedStyle(viewport).gap) || 15;  //預設 15
-    const unitWidth = cardWidth + gap;
-    const itemsToScroll = 6;    // 設定一次要滑動幾個卡片距離
+    const style = window.getComputedStyle(viewport);
+    const gap = parseFloat(style.columnGap) || parseFloat(style.gap) || 15; 
     
-    const scrollAmount = unitWidth * itemsToScroll; 
+    const unitWidth = cardWidth + gap;
+    const itemsVisible = Math.floor((viewport.clientWidth + gap) / unitWidth);
+    const columnsToScroll = Math.max(1, itemsVisible); 
+    const scrollAmount = unitWidth * columnsToScroll; 
+
+    isScrolling = true;
 
     viewport.scrollBy({
         left: direction * scrollAmount,
         behavior: 'smooth'
     });
+
+    setTimeout(() => {
+        isScrolling = false;
+    }, 300);
+}
+
+
+// 手機版：切換左右面板
+function switchMobileTab(target) {
+    document.getElementById('btn-tab-right').classList.remove('active');
+    document.getElementById('btn-tab-left').classList.remove('active');
+    document.getElementById('btn-tab-' + target).classList.add('active');
+
+    const leftPanel = document.querySelector('.service-menu-left');
+    const rightPanel = document.querySelector('.service-sidebar-right');
+    
+    if (target === 'right') {
+        leftPanel.classList.remove('m-active');
+        rightPanel.classList.add('m-active');
+    } else {
+        rightPanel.classList.remove('m-active');
+        leftPanel.classList.add('m-active');
+    }
 }
 
 // =========================================
