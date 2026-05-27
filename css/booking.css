@@ -430,9 +430,6 @@ body {
     transition: background 0.3s ease;
 }
 
-/* =========================================
-   🌟 自訂 Alert 彈出視窗樣式
-   ========================================= */
 .custom-alert-overlay {
     display: none;
     position: fixed;
