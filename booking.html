@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>穌一下．預約系統</title>
+    <link rel="icon" type="image/png" href="images/JeSoothe/Logos/3.png">
+    <link rel="stylesheet" href="css/booking.css?v=260527">
+</head>
+
+<body>
+
+    <section id="block-book">
+        <div class="booking-container">
+
+            <div id="page-1" class="wizard-step active">
+                <h2 class="step-title">☩ 本店規章 ☩</h2>
+
+                <div class="rules-container">
+                    <p><strong>【入店禮儀】</strong></p>
+                    <p>1.請將武器、寵物收起，並切換為走路模式，如有使用需求請提前告知接待人員。</p>
+                    <p>2.請勿使用大型特效技能或在店內奔跑，以免影響其他顧客。</p>
+                    <p>3.禁止ERP、政治議題及其他任何違反遊戲規定之行為。</p>
+                    <p>4.請保持禮貌，並尊重其他客人與店員。如有不當行為，本店有權將客人請出場並加入黑名單。</p>
+                    <p>5.請勿打探店員與顧客之隱私。非營業時間均為店員個人時間，請保持禮貌距離，尊重其個人意願。</p>
+                    <p>6.營業中店內禁止攝影，營業結束後可自由拍攝，但請注意拍攝禮儀。</p>
+                    <p>7.本店低消為一節指名費用。</p>
+
+                    <p><strong>【預約制度】</strong></p>
+                    <p>1.本店採預約優先制，建議提前填寫表單。當日預約截止時間為中午 12:00。</p>
+                    <p>2.預約僅保留 10 分鐘，逾時將開放現場指名。</p>
+                    <p>3.未預約客人歡迎入店。若心儀公關已被指名，可在大廳候位或指名其他公關。</p>
+
+                    <p><strong>【指名計費方式】</strong></p>
+                    <p>1.指名請與接待人員購買信物，一份信物代表一位客人一節的指名費用。</p>
+                    <p>2.指名費用以人頭計算。入場時請與門口接待人員結算，並交易對應數量的信物。</p>
+
+                    <p><strong>【對話與隱私】</strong></p>
+                    <p>1.為了維護店內客人的談話品質與隱私，公關與客人交流禁用白頻，請將指名公關與同行夥伴加入隊伍中，使用隊伍頻道交流。</p>
+                    <p>2.白頻僅限向接待人員提問，或是客人之間交流使用。</p>
+                    <p>3.可以使用情感動作文字提示，但請勿洗版。</p>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree-checkbox">
+                    <label for="agree-checkbox">我已閱讀並同意以上規範，也知曉收費方式</label>
+                </div>
+
+                <button type="button" class="submit-booking-btn" id="btn-next-1" disabled>繼續</button>
+            </div>
+
+            <div id="page-2" class="wizard-step">
+                <h2 class="step-title">預約資料填寫</h2>
+                <p class="step-desc">請填寫正確資料，如資料有誤將無法完成預約。</p>
+
+                <div class="form-group">
+                    <label class="booking-label">您的遊戲ID <span class="required">*</span></label>
+                    <input type="text" id="input-game-id" class="booking-input">
+                </div>
+
+                <div class="form-group">
+                    <label class="booking-label">您的伺服器 <span class="required">*</span></label>
+                    <div class="custom-select-wrapper" style="max-width: 100%;">
+                        <select id="select-server" class="booking-select">
+                            <option value="" disabled selected>請選擇</option>
+                            <option value="伊弗利特">伊弗利特</option>
+                            <option value="利維坦">利維坦</option>
+                            <option value="奧汀">奧汀</option>
+                            <option value="巴哈姆特">巴哈姆特</option>
+                            <option value="泰坦">泰坦</option>
+                            <option value="迦樓羅">迦樓羅</option>
+                            <option value="鳳凰">鳳凰</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="booking-label">預約人數 <span class="required">*</span></label>
+                    <input type="text" inputmode="numeric" maxlength="2" id="input-party-size" class="booking-input"
+                        min="1" max="8" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label class="booking-label">您的Discord ID <span class="required">*</span></label>
+                    <p class="sub-label" style="margin-bottom:8px;">如預約失敗，遊戲內無法聯絡您，將由此與您聯絡。</p>
+                    <input type="text" id="input-discord" class="booking-input" placeholder="例如: user#1234">
+                </div>
+
+                <div class="btn-group-row">
+                    <button type="button" class="submit-booking-btn btn-secondary" id="btn-prev-2">返回</button>
+                    <button type="button" class="submit-booking-btn" id="btn-next-2" disabled>繼續</button>
+                </div>
+            </div>
+
+            <div id="page-3" class="wizard-step">
+                <h2 class="step-title">預約詳細資訊</h2>
+
+                <div class="booking-section">
+                    <h3 class="booking-label">選擇指名公關</h3>
+                    <div class="custom-select-wrapper">
+                        <select id="host-select" class="booking-select">
+                            <option value="" disabled selected>系統載入中...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h3 class="booking-label">選擇預約日期</h3>
+                    <div class="custom-select-wrapper">
+                        <select id="date-select" class="booking-select" disabled>
+                            <option value="" disabled selected>請先選擇公關</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h3 class="booking-label">
+                        選擇預約時段 <span class="sub-label">1節 30 分鐘 (單次最多兩節)</span>
+                    </h3>
+
+                    <div id="dynamic-schedule-container">
+                        <div class="date-block">
+                            <div class="date-header">等待選擇日期...</div>
+                            <div class="time-slots-grid" style="display: block;">
+                                <div class="time-slot-disabled" id="schedule-status-text">載入班表系統中...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-summary">
+                        <div class="summary-row">
+                            <span class="summary-title">當前指名：</span>
+                            <span id="summary-host" class="summary-value">尚未選擇</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span class="summary-title">預約人數：</span>
+                            <span id="summary-party-size" class="summary-value">1 (人)</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span class="summary-title">已選節數：</span>
+                            <span id="summary-slots" class="summary-value">0 / 2 (節)</span>
+                        </div>
+
+                        <!-- <hr class="dashed-divider">
+                        <div class="summary-row total-row">
+                            <span class="summary-title">預計總金額：</span>
+                            <span id="summary-price" class="gold-text">0 Gil</span>
+                        </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="booking-label">其他需求 <span class="sub-label">(選填)</span></label>
+                        <input type="text" id="input-memo" class="booking-input" placeholder="有任何特殊需求可在此備註">
+                    </div>
+
+                    <div class="btn-group-row">
+                        <button type="button" class="submit-booking-btn btn-secondary" id="btn-prev-3">返回</button>
+                        <button type="button" class="submit-booking-btn" id="submit-booking-btn" disabled>送出預約</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="custom-alert" class="custom-alert-overlay">
+        <div class="custom-alert-box">
+            <h3 class="custom-alert-title">系統提示</h3>
+            <p id="custom-alert-message" class="custom-alert-message"></p>
+            <div class="custom-alert-btn-group">
+                <button type="button" id="custom-alert-cancel-btn" class="alert-btn alert-btn-cancel">取 消</button>
+                <button type="button" id="custom-alert-confirm-btn" class="alert-btn">確 定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // === 頁面切換邏輯 ===            
+            const page1 = document.getElementById('page-1');
+            const page2 = document.getElementById('page-2');
+            const page3 = document.getElementById('page-3');
+
+            const agreeCheckbox = document.getElementById('agree-checkbox');
+            const btnNext1 = document.getElementById('btn-next-1');
+            const inputGameId = document.getElementById('input-game-id');
+            const selectServer = document.getElementById('select-server');
+            const inputPartySize = document.getElementById('input-party-size');
+            const inputDiscord = document.getElementById('input-discord');
+            const btnNext2 = document.getElementById('btn-next-2');
+            const btnPrev2 = document.getElementById('btn-prev-2');
+            const btnPrev3 = document.getElementById('btn-prev-3');
+            const submitBtn = document.getElementById('submit-booking-btn');
+
+            // Page 1 邏輯
+            agreeCheckbox.addEventListener('change', (e) => {
+                btnNext1.disabled = !e.target.checked;
+            });
+            btnNext1.addEventListener('click', () => {
+                page1.classList.remove('active');
+                page2.classList.add('active');
+            });
+
+            // Page 2 邏輯 
+            function validatePage2() {
+                if (inputGameId.value.trim() !== "" && selectServer.value !== "" && inputDiscord.value.trim() !== "") {
+                    btnNext2.disabled = false;
+                } else {
+                    btnNext2.disabled = true;
+                }
+            }
+
+            inputGameId.addEventListener('input', validatePage2);
+            selectServer.addEventListener('change', validatePage2);
+            inputDiscord.addEventListener('input', validatePage2);
+            inputPartySize.addEventListener('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                updateSummary();
+            });
+
+            btnPrev2.addEventListener('click', () => {
+                page2.classList.remove('active');
+                page1.classList.add('active');
+            });
+            btnNext2.addEventListener('click', () => {
+                page2.classList.remove('active');
+                page3.classList.add('active');
+            });
+            btnPrev3.addEventListener('click', () => {
+                page3.classList.remove('active');
+                page2.classList.add('active');
+            });
+
+            // === 第三頁 ===
+            const MAX_SLOTS = 2;
+            // const PRICE_PER_SLOT = 150000;
+            const GAS_URL = "https://script.google.com/macros/s/AKfycby56AZy5dfBonxCwi9E8vlP-CbspkTuT768W6JOV3nid-SOEFU9aMewSVP05z3Vf5zvSA/exec";
+
+            let currentHost = "";
+            let currentDate = "";
+            let selectedSlots = [];
+
+            let globalScheduleData = [];
+            let globalHeader = [];
+
+            const hostSelect = document.getElementById('host-select');
+            const dateSelect = document.getElementById('date-select');
+            const summaryHost = document.getElementById('summary-host');
+            const summaryPartySize = document.getElementById('summary-party-size');
+            const summarySlots = document.getElementById('summary-slots');
+            const summaryPrice = document.getElementById('summary-price');
+            const scheduleContainer = document.getElementById('dynamic-schedule-container');
+            const statusText = document.getElementById('schedule-status-text');
+
+            // --- 0. 網頁載入：一次性抓取整張班表 ---
+            fetch(GAS_URL)
+                .then(res => res.json())
+                .then(resData => {
+                    if (resData.success && resData.data.length > 1) {
+                        globalHeader = resData.data[0];
+                        globalScheduleData = resData.data.slice(1);
+
+                        // 提取A欄不重複的公關名字
+                        let hosts = [...new Set(globalScheduleData.map(r => r[0]).filter(h => h))];
+                        let optionsHtml = '<option value="" disabled selected>請選擇公關</option>';
+                        hosts.forEach(h => {
+                            optionsHtml += `<option value="${h}">${h}</option>`;
+                        });
+                        hostSelect.innerHTML = optionsHtml;
+
+                        if (statusText) statusText.textContent = "請先選擇公關與日期";
+                    } else {
+                        hostSelect.innerHTML = '<option value="" disabled selected>查無公關資料</option>';
+                        if (statusText) statusText.textContent = "目前無法連線至班表系統";
+                    }
+                })
+                .catch(err => {
+                    console.error("讀取班表失敗:", err);
+                    hostSelect.innerHTML = '<option value="" disabled selected>連線失敗，請重新整理</option>';
+                });
+
+            // --- 1. 當「公關」被選擇時 ---
+            hostSelect.addEventListener('change', (e) => {
+                currentHost = e.target.value;
+                summaryHost.textContent = currentHost;
+                currentDate = "";
+                clearSelectedSlots();
+                renderDefaultStatus("請先選擇預約日期");
+
+                let hostRow = globalScheduleData.find(r => r[0] === currentHost);
+                let availableDates = [];
+
+                // 從標題列抓出有開放的日期
+                if (hostRow) {
+                    for (let i = 1; i < globalHeader.length; i++) {
+                        let d = globalHeader[i].split(" ")[0];
+                        if (d && !availableDates.includes(d)) {
+                            availableDates.push(d);
+                        }
+                    }
+                }
+
+                if (availableDates.length > 0) {
+                    let optionsHtml = '<option value="" disabled selected>請選擇預約日期</option>';
+                    availableDates.forEach(d => {
+                        optionsHtml += `<option value="${d}">${d}</option>`;
+                    });
+                    dateSelect.innerHTML = optionsHtml;
+                    dateSelect.disabled = false;
+                } else {
+                    dateSelect.innerHTML = '<option value="" disabled selected>該公關目前無排班</option>';
+                    dateSelect.disabled = true;
+                }
+                checkSubmitState();
+            });
+
+            // --- 2. 當「日期」被選擇時 ---
+            dateSelect.addEventListener('change', (e) => {
+                currentDate = e.target.value;
+                clearSelectedSlots();
+
+                let hostRow = globalScheduleData.find(r => r[0] === currentHost);
+                let slotsHtml = `
+                    <div class="date-block">
+                        <div class="date-header">${currentDate} 可預約時段</div>
+                        <div class="time-slots-grid">
+                `;
+
+                if (hostRow) {
+                    let hasSlots = false;
+                    for (let i = 1; i < globalHeader.length; i++) {
+                        let headerDate = globalHeader[i].split(" ")[0];
+
+                        if (headerDate === currentDate) {
+                            hasSlots = true;
+                            let timeOnly = globalHeader[i].split(" ")[1];
+                            let status = hostRow[i] || "未值班";
+                            let isAvailable = (status === "可預約");
+
+                            slotsHtml += `
+                                <button type="button" class="time-slot-btn" 
+                                    data-time="${globalHeader[i]}" ${!isAvailable ? 'disabled' : ''}>
+                                    ${timeOnly}
+                                    ${!isAvailable ? `<br><small>${status}</small>` : ''}
+                                </button>`;
+                        }
+                    }
+                    slotsHtml += `</div></div>`;
+
+                    if (hasSlots) {
+                        scheduleContainer.innerHTML = slotsHtml;
+                        scheduleContainer.querySelectorAll('.time-slot-btn').forEach(btn =>
+                            btn.addEventListener('click', handleTimeSlotClick)
+                        );
+                    } else {
+                        renderDefaultStatus("本日無可用時段");
+                    }
+                }
+                checkSubmitState();
+            });
+
+            function renderDefaultStatus(text) {
+                scheduleContainer.innerHTML = `
+                    <div class="date-block">
+                        <div class="date-header">等待選擇...</div>
+                        <div class="time-slots-grid" style="display: block;">
+                            <div class="time-slot-disabled">${text}</div>
+                        </div>
+                    </div>`;
+            }
+
+            // --- 3. 處理時段點擊 ---
+            function handleTimeSlotClick(e) {
+                const btn = e.target;
+                const timeValue = btn.getAttribute('data-time');
+
+                if (btn.classList.contains('selected')) {
+                    btn.classList.remove('selected');
+                    selectedSlots = selectedSlots.filter(t => t !== timeValue);
+                } else {
+                    if (selectedSlots.length >= MAX_SLOTS) {
+                        showCustomAlert(`單次預約最多只能選擇 ${MAX_SLOTS} 節喔！`);
+                        return;
+                    }
+                    btn.classList.add('selected');
+                    selectedSlots.push(timeValue);
+                }
+                updateSummary();
+                checkSubmitState();
+            }
+
+            function updateSummary() {
+                const partySize = parseInt(inputPartySize.value) || 1;
+                summarySlots.textContent = `${selectedSlots.length} / ${MAX_SLOTS} (節)`;
+                summaryPartySize.textContent = `${partySize} (人)`;
+                // summaryPrice.textContent = `${(selectedSlots.length * PRICE_PER_SLOT * partySize).toLocaleString()} Gil`;
+            }
+
+
+            const customAlert = document.getElementById('custom-alert');
+            const customAlertMsg = document.getElementById('custom-alert-message');
+            const alertConfirmBtn = document.getElementById('custom-alert-confirm-btn');
+            const alertCancelBtn = document.getElementById('custom-alert-cancel-btn');
+
+            function showCustomAlert(message, onConfirm = null, showCancel = false) {
+                customAlertMsg.innerHTML = message.replace(/\n/g, '<br>');
+                customAlert.style.display = 'flex';
+                alertCancelBtn.style.display = showCancel ? 'block' : 'none';
+
+                alertConfirmBtn.onclick = () => {
+                    customAlert.style.display = 'none';
+                    if (onConfirm) onConfirm();
+                };
+
+                alertCancelBtn.onclick = () => {
+                    customAlert.style.display = 'none';
+                };
+            }
+
+            function checkSubmitState() {
+                if (currentHost !== "" && currentDate !== "" && selectedSlots.length > 0) {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            }
+
+            function clearSelectedSlots() {
+                selectedSlots = [];
+                updateSummary();
+            }
+
+            submitBtn.addEventListener('click', () => {
+                const finalData = {
+                    gameId: inputGameId.value,
+                    server: selectServer.value,
+                    partySize: inputPartySize.value,
+                    discord: inputDiscord.value,
+                    host: currentHost,
+                    date: currentDate,
+                    slots: selectedSlots,
+                    memo: document.getElementById('input-memo').value
+                };
+
+                const cleanSlots = finalData.slots.map(slot => {
+                    let parts = slot.split(/[\n ]+/);
+                    return parts.length > 1 ? parts[1] : slot;
+                }).join(', ');
+
+
+                const summaryMsg =
+                    `請確認您的預約資訊：\n\n` +
+                    `【角色 ID】${finalData.gameId}\n` +
+                    `【伺服器】${finalData.server}\n` +
+                    `【預約人數】${finalData.partySize} 人\n` +
+                    `【Discord】${finalData.discord}\n` +
+                    `【指名公關】${finalData.host}\n` +
+                    `【預約日期】${finalData.date}\n` +
+                    `【預約時段】${cleanSlots}\n\n`;
+
+
+                showCustomAlert(summaryMsg, () => {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "傳 送 中...";
+
+                    fetch(GAS_URL, {
+                        method: "POST",
+                        body: JSON.stringify(finalData)
+                    })
+                        .then(res => res.json())
+                        .then(resData => {
+                            if (resData.success) {
+                                showCustomAlert("預約成功！感謝您的填寫，穌一下期待與您相見！", () => {
+                                    window.location.reload();
+                                });
+                            } else {
+                                showCustomAlert("預約失敗: " + resData.message);
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = "送 出 預 約";
+                            }
+                        })
+                        .catch(err => {
+                            console.error("送出失敗", err);
+                            showCustomAlert("網路連線發生錯誤，請稍後再試。");
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = "送 出 預 約";
+                        });
+                }, true);
+            });
+        });
+    </script>
+</body>
+
+</html>
