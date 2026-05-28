@@ -41,10 +41,6 @@
             <a href="booking.html" target="_blank" rel="noopener noreferrer" class="hotbar-slot" data-tooltip="預約指名">
                 <img src="images/JeSoothe/Hotbar/Book.png" alt="Reservation" class="slot-icon">
             </a>
-            <!-- <a href="https://forms.gle/zQJ3DbFxA4P92Ew87" target="_blank" rel="noopener noreferrer" class="hotbar-slot"
-                data-tooltip="預約指名">
-                <img src="images/JeSoothe/Hotbar/Book.png" alt="Reservation " class="slot-icon">
-            </a> -->
             <a href="index.html" class="hotbar-slot" data-tooltip="返回教堂">
                 <img src="images/JeSoothe/Hotbar/BACK.png" alt="Exit" class="slot-icon">
             </a>
@@ -201,7 +197,7 @@
                         </div>
                         <div class="list-desc">
                             <p>．服務時間：每節 30 分鐘。</p>
-                            <p>．指名信物：請與接待人員購買，一份信物代表一人一節的指名費用。</p>
+                            <p>．指名信物：請與接待人員購買，一份信物代表一位客人30分鐘的指名費用。</p>
                             <p>．將信物交給您想指名的公關，即代表指名成功，服務將於此時正式開始。</p>
                         </div>
                     </div>
@@ -256,6 +252,37 @@
                         </div>
                     </div>
 
+                    <div class="service-list-row">
+                        <div class="list-header-line">
+                            <h4>駐點繪師</h4>
+                        </div>
+
+                        <div class="list-sub-item-line">
+                            <span class="sub-item-name">．Q版塗鴉貼紙</span>
+                            <div class="list-dots"></div>
+                            <div class="list-price">500,000 Gil <span class="price-sub">/人</span></div>
+                        </div>
+                            <div class="list-desc" style="margin-top: 6px; padding-left: 40px;">
+                                <p class="desc-highlight">※ 如需繪製雙人圖請購買 2 份信物。</p>
+                            </div>
+
+                        <div class="list-sub-item-line">
+                            <span class="sub-item-name">．正比單色插畫</span>
+                            <div class="list-dots"></div>
+                            <div class="list-price">800,000 Gil <span class="price-sub">/人</span></div>
+                        </div>
+                            <div class="list-desc" style="margin-top: 6px; padding-left: 40px;">
+                                <p class="desc-highlight">※ 僅限單人。</p>
+                            </div>
+
+                        <div class="list-desc" style="margin-top: 6px;">
+                            <p>．請與庭院雇員購買信物，當日如有此項服務將會於19:00開放購買，售完為止。</p>
+                            <p>．Q版信物售價150,000 Gil，入店後請與繪師交易信物以及350,000 Gil。</p>
+                            <p>．正比信物售價240,000 Gil，入店後請與繪師交易信物以及560,000 Gil。</p>
+                            <p>．一組客人預計花費 1 - 1.5 小時，請確認時間是否充裕。</p>
+                        </div>                            
+                    </div>                    
+                    
                     <div class="service-list-row">
                         <div class="list-header-line">
                             <h4>公關個人加購項目</h4>
@@ -362,6 +389,14 @@
                                 <div class="circle-img"><img src="images/JeSoothe/members/btn/実羅.jpg" alt=""></div>
                                 <span>実羅</span>
                             </div>
+                            <div class="category-card" onclick="showCategory('ID23')">
+                                <div class="circle-img"><img src="images/JeSoothe/members/btn/勞贖好肥.jpg" alt=""></div>
+                                <span>勞贖好肥</span>
+                            </div>
+                            <div class="category-card" onclick="showCategory('ID24')">
+                                <div class="circle-img"><img src="images/JeSoothe/members/btn/波波透可.jpg" alt=""></div>
+                                <span>波波透可</span>
+                            </div>                            
                         </div>
                         <button class="scroll-arrow right" onclick="scrollTabs(1)">〉</button>
                     </div>
@@ -938,6 +973,68 @@
                             </div>
                         </div>
 
+                        <div id="cat-ID23" class="service-cat-block">
+                            <h3 class="staff-name-title">勞贖好肥</h3>
+                            <div class="service-list-row">
+                                <div class="list-header-line">
+                                    <h4>✦ 簽繪拍立得</h4>
+                                    <div class="list-dots"></div>
+                                    <div class="list-price">◯</div>
+                                </div>
+                            </div>
+                            <div class="service-list-row">
+                                <div class="list-header-line">
+                                    <h4>✦ 也許你會更喜歡這樣的我</h4>
+                                    <div class="list-dots"></div>
+                                    <div class="list-price">100,000 Gil</div>
+                                </div>
+                                <div class="list-desc">
+                                    <p>．編號1~3隨機抽選一套服裝與你共度夜晚，小心不要抽到奇怪的東西了。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cat-ID24" class="service-cat-block">
+                            <h3 class="staff-name-title">波波透可</h3>
+                            <div class="service-list-row">
+                                <div class="list-header-line">
+                                    <h4>✦ 簽繪拍立得</h4>
+                                    <div class="list-dots"></div>
+                                    <div class="list-price">◯</div>
+                                </div>
+                            </div>
+                            <div class="service-list-row">
+                                <div class="list-header-line">
+                                    <h4>✦ 飼料補給</h4>
+                                    <div class="list-dots"></div>
+                                    <div class="list-price">100 Gil</div>
+                                </div>
+                                <div class="list-desc">
+                                    <p>．要跟波波一起吃嗎？相信這個口感你一定會喜歡。</p>
+                                </div>
+                            </div>
+                            <div class="service-list-row">
+                                <div class="list-header-line">
+                                    <h4>✦ 客選衣裝</h4>
+                                    <div class="list-dots"></div>
+                                    <div class="list-price">1,000 Gil</div>
+                                </div>
+                                <div class="list-desc">
+                                    <p>．從1-20當中選擇一個你喜歡的數字，波波將依照你選擇的數字切換對應的衣裝，此項目當日只能使用一次，使用後可依照需求恢復原本的衣裝。</p>
+                                </div>
+                            </div>     
+                            <div class="service-list-row">
+                                <div class="list-header-line">
+                                    <h4>✦ 代行留影</h4>
+                                    <div class="list-dots"></div>
+                                    <div class="list-price">? Gil</div>
+                                </div>
+                                <div class="list-desc">
+                                    <p>．由於不是專業的光之攝影師，與以往平常不同的隨興攝影(非拍立得形式)，只是與你一起留下曾經來訪時的回憶。</p>
+                                </div>
+                            </div>                                
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1063,26 +1160,36 @@
                         onclick="showMember('member-22', this)">
                         <img src="images/JeSoothe/members/btn/実羅.jpg" alt="小頭像" class="avatar-icon">
                     </div>
+                    <div class="member-avatar-btn" data-title="繪屍" data-name="勞贖好肥"
+                        style="--bg-url: url('../images/JeSoothe/members/sidebar/勞贖好肥_side.jpg');"
+                        onclick="showMember('member-23', this)">
+                        <img src="images/JeSoothe/members/btn/勞贖好肥.jpg" alt="小頭像" class="avatar-icon">
+                    </div>
+                    <div class="member-avatar-btn" data-title="恆緣" data-name="波波透可"
+                        style="--bg-url: url('../images/JeSoothe/members/sidebar/波波透可_side.jpg');"
+                        onclick="showMember('member-24', this)">
+                        <img src="images/JeSoothe/members/btn/波波透可.jpg" alt="小頭像" class="avatar-icon">
+                    </div>                    
                     <div class="member-avatar-btn" data-title="女僕" data-name="Wiz"
                         style="--bg-url: url('../images/JeSoothe/members/sidebar/Wiz_side.jpg');"
-                        onclick="showMember('member-23', this)">
+                        onclick="showMember('member-80', this)">
                         <img src="images/JeSoothe/members/btn/Wiz.jpg" alt="小頭像" class="avatar-icon">
                     </div>
                     <div class="member-avatar-btn" data-title="沈著" data-name="大雞蛋"
                         style="--bg-url: url('../images/JeSoothe/members/sidebar/大雞蛋_side.jpg');"
-                        onclick="showMember('member-24', this)">
+                        onclick="showMember('member-81', this)">
                         <img src="images/JeSoothe/members/btn/大雞蛋.jpg" alt="小頭像" class="avatar-icon">
                     </div>
                     <div class="member-avatar-btn" data-title="窮鬼" data-name="小椪皮"
                         style="--bg-url: url('../images/JeSoothe/members/sidebar/小椪皮_side.jpg');"
-                        onclick="showMember('member-25', this)">
+                        onclick="showMember('member-82', this)">
                         <img src="images/JeSoothe/members/btn/小椪皮.jpg" alt="小頭像" class="avatar-icon">
                     </div>
                     <div class="member-avatar-btn" data-title="廉政" data-name="大溪幸福鎮長"
                         style="--bg-url: url('../images/JeSoothe/members/sidebar/大溪幸福鎮長_side.jpg');"
-                        onclick="showMember('member-26', this)">
+                        onclick="showMember('member-83', this)">
                         <img src="images/JeSoothe/members/btn/大溪幸福鎮長.jpg" alt="小頭像" class="avatar-icon">
-                    </div>
+                    </div>                                                                                               
                 </div>
 
                 <div class="members-content">
@@ -1425,10 +1532,10 @@
                             <div class="member-desc">
                                 <p>「你確定要找我聊天？你真是......勇敢。(微妙的笑)」</p>
                             </div>
-                            <a href="https://www.threads.com/@rabbit_paper1207" target="_blank"
-                                rel="noopener noreferrer" class="member-threads-btn">
+                            <a href="https://www.threads.com/@rabbit_paper1207" target="_blank" rel="noopener noreferrer"
+                                class="member-threads-btn">
                                 <img src="images/JeSoothe/members/Threads.png" alt="Threads">
-                            </a>
+                            </a>                            
                         </div>
                         <div class="member-portrait">
                             <img src="images/JeSoothe/members/兔紙.png" alt="ID16 立繪">
@@ -1543,7 +1650,7 @@
                             <a href="https://www.threads.com/@jying_8577" target="_blank" rel="noopener noreferrer"
                                 class="member-threads-btn">
                                 <img src="images/JeSoothe/members/Threads.png" alt="Threads">
-                            </a>
+                            </a>                             
                         </div>
                         <div class="member-portrait">
                             <img src="images/JeSoothe/members/茉茉.png" alt="ID21 立繪">
@@ -1565,14 +1672,61 @@
                             <div class="member-desc">
                                 <p>「月亮與潮汐之間的牽引是永恆的，像我和你一樣。」</p>
                             </div>
+                            <a href="https://www.threads.com/@ascian_miraaa" target="_blank" rel="noopener noreferrer"
+                                class="member-threads-btn">
+                                <img src="images/JeSoothe/members/Threads.png" alt="Threads">
+                            </a>                             
                         </div>
                         <div class="member-portrait">
                             <img src="images/JeSoothe/members/実羅.png" alt="ID22 立繪">
                         </div>
                     </div>
 
-                    <!-- 櫃台人員 -->
                     <div id="member-23" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">電波</span>
+                                <span class="tag">小惡魔</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>我做的菜很好吃哦~雖然衛生局不太喜歡我。</p>
+                            </div>
+                            <a href="https://www.threads.com/@on2830883" target="_blank" rel="noopener noreferrer"
+                                class="member-threads-btn">
+                                <img src="images/JeSoothe/members/Threads.png" alt="Threads">
+                            </a>                            
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/勞贖好肥.png" alt="ID23 立繪">
+                        </div>
+                    </div>
+
+                   <div id="member-24" class="member-detail-card">
+                        <div class="member-info">
+                            <div class="name-group">
+                                <span class="member-title dynamic-title"></span>
+                                <h3 class="member-id dynamic-name"></h3>
+                            </div>
+                            <div class="member-tags">
+                                <span class="tag">陪伴</span>
+                                <span class="tag">名承</span>
+                                <span class="tag">顏文字</span>
+                            </div>
+                            <div class="member-desc">
+                                <p>「或許不特別耀眼，但會把相遇珍惜到最後。」</p>
+                            </div>
+                        </div>
+                        <div class="member-portrait">
+                            <img src="images/JeSoothe/members/波波透可.png" alt="ID24 立繪">
+                        </div>
+                    </div>
+
+                    <!-- 櫃台人員 -->
+                    <div id="member-80" class="member-detail-card">
                         <div class="member-info">
                             <div class="name-group">
                                 <span class="member-title dynamic-title"></span>
@@ -1586,11 +1740,11 @@
                             </div>
                         </div>
                         <div class="member-portrait">
-                            <img src="images/JeSoothe/members/Wiz.png" alt="ID23 立繪">
+                            <img src="images/JeSoothe/members/Wiz.png" alt="ID80 立繪">
                         </div>
                     </div>
 
-                    <div id="member-24" class="member-detail-card">
+                    <div id="member-81" class="member-detail-card">
                         <div class="member-info">
                             <div class="name-group">
                                 <span class="member-title dynamic-title"></span>
@@ -1602,17 +1756,17 @@
                             <div class="member-desc">
                                 <p>「噓...要有耐心喔——」</p>
                             </div>
-                            <a href="https://www.threads.com/@00_rinouo" target="_blank" rel="noopener noreferrer"
-                                class="member-threads-btn">
+                           <a href="https://www.threads.com/@00_rinouo" target="_blank"
+                                rel="noopener noreferrer" class="member-threads-btn">
                                 <img src="images/JeSoothe/members/Threads.png" alt="Threads">
-                            </a>
+                            </a>                            
                         </div>
                         <div class="member-portrait">
-                            <img src="images/JeSoothe/members/大雞蛋.png" alt="ID24 立繪">
+                            <img src="images/JeSoothe/members/大雞蛋.png" alt="ID81 立繪">
                         </div>
                     </div>
 
-                    <div id="member-25" class="member-detail-card">
+                    <div id="member-82" class="member-detail-card">
                         <div class="member-info">
                             <div class="name-group">
                                 <span class="member-title dynamic-title"></span>
@@ -1626,11 +1780,11 @@
                             </div>
                         </div>
                         <div class="member-portrait">
-                            <img src="images/JeSoothe/members/小椪皮.png" alt="ID25 立繪">
+                            <img src="images/JeSoothe/members/小椪皮.png" alt="ID82 立繪">
                         </div>
                     </div>
 
-                    <div id="member-26" class="member-detail-card">
+                    <div id="member-83" class="member-detail-card">
                         <div class="member-info">
                             <div class="name-group">
                                 <span class="member-title dynamic-title"></span>
@@ -1644,13 +1798,14 @@
                             </div>
                         </div>
                         <div class="member-portrait">
-                            <img src="images/JeSoothe/members/大溪幸福鎮長.png" alt="ID26 立繪">
+                            <img src="images/JeSoothe/members/大溪幸福鎮長.png" alt="ID83 立繪">
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
+    </section>
     </section>
 
     <script src="js/JeSoothe.js"></script>

@@ -158,15 +158,9 @@ body {
     /* white-space: nowrap; */
 }
 
-.time-slot-btn:hover:not(:disabled) {
+.time-slot-btn:hover:not(:disabled):not(.selected) {
     border-color: rgba(var(--theme-rgb), 0.6);
     background: linear-gradient(145deg, rgba(50, 25, 60, 0.8), rgba(20, 10, 30, 0.95));
-    /* transform: translateY(-2px);
-
-
-    box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.8),
-        0 0 5px rgba(var(--theme-rgb), 0.05); */
 }
 
 .time-slot-btn.selected {
@@ -176,10 +170,6 @@ body {
     text-shadow:
         0 0 1px var(--theme-color),
         0 0 8px rgba(var(--theme-rgb), 0.8);
-    /* transform: translateY(1px); */
-    /* box-shadow: 
-        inset 0 2px 5px rgba(0, 0, 0, 0.6),
-        0 0 10px rgba(var(--theme-rgb), 0.15); */
 }
 
 .time-slot-btn:disabled {
@@ -200,12 +190,7 @@ body {
     letter-spacing: 2px;
     width: 100%;
     box-sizing: border-box;
-
-    /* 🌟 拔掉原本的 padding，改用 min-height 強制鎖死高度 */
     min-height: 100px;
-    /* 👈 這是兩排按鈕大約的高度 */
-
-    /* 🌟 讓裡面的文字絕對垂直/水平置中 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,11 +257,6 @@ body {
     font-weight: bold;
     /* box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4); */
     text-shadow: 0 0 8px rgba(var(--theme-rgb), 0.2);
-}
-
-
-.submit-booking-btn:hover:not(:disabled) {
-    /* background: linear-gradient(90deg, rgba(var(--theme-rgb), 0.1), rgba(var(--theme-rgb), 0.25), rgba(var(--theme-rgb), 0.1)); */
 }
 
 .submit-booking-btn:disabled {
@@ -616,11 +596,12 @@ body {
     }
 
     .tooltip-text {
-        bottom: auto; 
-        top: 135%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 250px; 
+        top: 150%;           
+        bottom: auto;        
+        left: -15px;        
+        transform: none;    
+        /* width: 240px;        */
+        max-width: 150px;
     }
 
     .gold-text {
