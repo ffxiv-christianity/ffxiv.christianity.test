@@ -97,7 +97,16 @@
                 <h2 class="step-title">預約詳細資訊</h2>
 
                 <div class="booking-section">
-                    <h3 class="booking-label">選擇指名公關</h3>
+                    <h3 class="booking-label">
+                        選擇指名公關
+                        <div class="tooltip-icon" onclick="">?
+                            <span class="tooltip-text">
+                                <strong>【指名規則】</strong><br>
+                                ．最少指名 1 名，最多指名 3 名。<br>
+                                ．來店人數不滿 3 位，則以人數為上限（例：2 人最多指名 2 位）。
+                            </span>
+                        </div>
+                    </h3>
                     <div class="custom-select-wrapper">
                         <select id="host-select" class="booking-select">
                             <option value="" disabled selected>系統載入中...</option>
@@ -237,11 +246,13 @@
             // === 第三頁 ===
             const MAX_SLOTS = 2;
             // const PRICE_PER_SLOT = 150000;
-            const GAS_URL = "https://script.google.com/macros/s/AKfycbz5SLplIB_vYy0Z8jousyW9T0ofMDL3TPT6wrq29IyFE1c9ip0yvtJcTpeX1O9I8eTIOg/exec";
+            const GAS_URL = "https://script.google.com/macros/s/AKfycbwQbrow6udpNEcYU_9GunBzD60364-5B3gwq74WIdalgvLHb3frP5qbcXYYgfhGVPMfPg/exec";
 
             let currentHost = "";
             let currentDate = "";
             let selectedSlots = [];
+
+            let successfulBookings = 0;
 
             let globalScheduleData = [];
             let globalHeader = [];
@@ -374,7 +385,7 @@
 
             // --- 3. 處理時段點擊 ---
             function handleTimeSlotClick(e) {
-                const btn = e.target;
+                const btn = e.currentTarget;
                 const timeValue = btn.getAttribute('data-time');
 
                 if (btn.classList.contains('selected')) {
@@ -405,8 +416,13 @@
             const alertConfirmBtn = document.getElementById('custom-alert-confirm-btn');
             const alertCancelBtn = document.getElementById('custom-alert-cancel-btn');
 
-            function showCustomAlert(message, onConfirm = null, showCancel = false) {
+            function showCustomAlert(message, onConfirm = null, showCancel = false, textAlign = 'center', confirmText = '確 定', cancelText = '取 消') {
                 customAlertMsg.innerHTML = message.replace(/\n/g, '<br>');
+                customAlertMsg.style.textAlign = textAlign;
+                
+                alertConfirmBtn.textContent = confirmText;
+                alertCancelBtn.textContent = cancelText;
+
                 customAlert.style.display = 'flex';
                 alertCancelBtn.style.display = showCancel ? 'block' : 'none';
 
@@ -417,6 +433,9 @@
 
                 alertCancelBtn.onclick = () => {
                     customAlert.style.display = 'none';
+                    if (cancelText === '結束預約') {
+                        window.location.reload();
+                    }
                 };
             }
 
@@ -473,9 +492,37 @@
                         .then(res => res.json())
                         .then(resData => {
                             if (resData.success) {
-                                showCustomAlert("預約成功！感謝您的填寫，穌一下期待與您相見！", () => {
-                                    window.location.reload();
-                                });
+                                // 🌟 1. 預約成功，計數器 +1
+                                successfulBookings++; 
+
+                                // 🌟 2. 計算指名上限 (最多3人，且不超過來店人數)
+                                const partySize = parseInt(inputPartySize.value) || 1;
+                                const maxHosts = Math.min(3, partySize);
+                                const remain = maxHosts - successfulBookings;
+
+                                if (remain > 0) {
+                                    showCustomAlert(
+                                        `第 ${successfulBookings} 位公關預約成功！\n\n依照您的來店人數，您還可以再指名 ${remain} 位公關。\n請問要繼續預約下一位嗎？`, 
+                                        () => {
+                                            currentHost = "";
+                                            currentDate = "";
+                                            clearSelectedSlots();
+                                            hostSelect.value = "";
+                                            dateSelect.innerHTML = '<option value="" disabled selected>請先選擇公關</option>';
+                                            dateSelect.disabled = true;
+                                            renderDefaultStatus("請先選擇公關與日期");
+                                            summaryHost.textContent = "尚未選擇";
+                                            submitBtn.textContent = "送 出 預 約";
+                                            checkSubmitState();
+                                        }, 
+                                        true, 'center', '繼續預約', '結束預約'
+                                    );
+                                } else {
+                                    showCustomAlert(
+                                        `預約成功！\n\n您已達到本次來店人數的指名上限，\n穌一下期待與您相見✦`, 
+                                        () => { window.location.reload(); }
+                                    );
+                                }
                             } else {
                                 showCustomAlert("預約失敗: " + resData.message);
                                 submitBtn.disabled = false;
@@ -488,7 +535,7 @@
                             submitBtn.disabled = false;
                             submitBtn.textContent = "送 出 預 約";
                         });
-                }, true);
+                }, true, 'left');
             });
         });
     </script>

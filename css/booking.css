@@ -411,6 +411,56 @@ body {
 }
 
 /* =========================================
+   Tooltip 提示框
+   ========================================= */
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(var(--theme-rgb), 0.15);
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
+    font-size: 0.75rem;
+    margin-left: 8px;
+    cursor: help;
+    position: relative;
+    vertical-align: text-bottom;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 230px;
+    background: rgba(10, 5, 12, 0.95);
+    color: #e6d5e8;
+    text-align: left;
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid rgba(var(--theme-rgb), 0.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    position: absolute;
+    z-index: 10;
+    top: 50%;                    
+    left: 135%;                        
+    transform: translateY(-50%);        
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-shadow: none;
+    pointer-events: none;
+}
+
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* =========================================
    文字區捲軸樣式（Webkit 瀏覽器專用）
    ========================================= */
 
@@ -475,7 +525,7 @@ body {
     font-size: 0.95rem;
     line-height: 1.8;
     margin-bottom: 25px;
-    text-align: left; 
+    text-align: center; 
 }
 
 .custom-alert-btn-group {
@@ -528,8 +578,10 @@ body {
     }
 
     .booking-container {
-        min-width: 355px !important;
-        padding: 25px 20px;
+        min-width: unset !important; 
+        width: 100%;
+        max-width: 450px;
+        padding: 25px 15px; 
         max-height: 90vh;
     }
 
@@ -537,12 +589,21 @@ body {
         margin-bottom: 25px;
     }
 
+    .step-title {
+        font-size: 1.15rem; 
+    }
+
+    .rules-container {
+        height: 250px; 
+        padding: 15px;
+    }
+
     .time-slots-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .time-slot-disabled {
-        min-height: 140px;
+        min-height: 120px;
     }
 
     .custom-select-wrapper {
@@ -552,6 +613,14 @@ body {
     .booking-select,
     .submit-booking-btn {
         max-width: 100%;
+    }
+
+    .tooltip-text {
+        bottom: auto; 
+        top: 135%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px; 
     }
 
     .gold-text {
@@ -567,7 +636,37 @@ body {
         flex: 1;
         width: 0;
         margin-top: 0;
-        padding: 14px 5px;
+        padding: 12px 5px; 
+        font-size: 0.95rem; 
+        letter-spacing: 4px;
+    }
+
+
+    .custom-alert-box {
+        padding: 25px 20px;
+        width: 70%; 
+    }
+
+    .custom-alert-btn-group {
+        gap: 10px; 
+    }
+    
+    .alert-btn {
+        padding: 8px 15px; 
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 360px) {
+    .booking-container {
+        padding: 20px 12px;
+    }
+    .time-slot-btn {
+        font-size: 0.75rem;
+        padding: 8px 5px;
+    }
+    .btn-group-row .submit-booking-btn {
+        letter-spacing: 2px;
     }
 }
 
