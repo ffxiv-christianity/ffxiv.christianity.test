@@ -7,6 +7,12 @@
     <title>穌一下．JeSoothe</title>
     <link rel="icon" type="image/png" href="images/JeSoothe/Logos/3.png">
     <link rel="stylesheet" href="css/JeSoothe.css?v=260527">
+    <link rel="manifest" href="manifest/manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./manifest/sw.js');
+        }
+    </script>
 </head>
 
 <body>
