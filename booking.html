@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>穌一下．預約系統</title>
     <link rel="icon" type="image/png" href="images/JeSoothe/Logos/3.png">
-    <link rel="stylesheet" href="css/booking.css?v=260527">
+    <link rel="stylesheet" href="css/booking.css?v=260531">
 </head>
 
 <body>
@@ -246,7 +246,7 @@
             // === 第三頁 ===
             const MAX_SLOTS = 2;
             // const PRICE_PER_SLOT = 150000;
-            const GAS_URL = "https://script.google.com/macros/s/AKfycbxGhoL7k7eev758S8xTc7p7XQJDzLB2brGyFbBuoX-sjYFw9dXHjhb6ctJGJDT9cKp-cw/exec";
+            const GAS_URL = "https://script.google.com/macros/s/AKfycbyehxRQ5ziO_UBoUKiwE2VUTdFtrbAp_BhIK4uhE2n6dJ-1BCTmqJUvyKImOgRBVJah/exec";
 
             let currentHost = "";
             let currentDate = "";
@@ -492,10 +492,10 @@
                         .then(res => res.json())
                         .then(resData => {
                             if (resData.success) {
-                                // 🌟 1. 預約成功，計數器 +1
+                                // 預約成功，計數器 +1
                                 successfulBookings++; 
 
-                                // 🌟 2. 計算指名上限 (最多3人，且不超過來店人數)
+                                // 計算指名上限 (最多3人，且不超過來店人數)
                                 const partySize = parseInt(inputPartySize.value) || 1;
                                 const maxHosts = Math.min(3, partySize);
                                 const remain = maxHosts - successfulBookings;
