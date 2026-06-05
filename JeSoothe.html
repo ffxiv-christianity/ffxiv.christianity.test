@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="css/JeSoothe.css?v=260527">
     <link rel="manifest" href="manifest/manifest.json">
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./manifest/sw.js');
-        }
+        navigator.serviceWorker.register('./manifest/sw.js');
     </script>
 </head>
 
